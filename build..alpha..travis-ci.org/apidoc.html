@@ -1,0 +1,6123 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/npm/fstream#readme"
+
+    >fstream (v1.0.11)</a>
+</h1>
+<h4>Advanced file system stream things</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream">module fstream</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Abstract">
+            function <span class="apidocSignatureSpan">fstream.</span>Abstract
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirReader">
+            function <span class="apidocSignatureSpan">fstream.</span>DirReader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirWriter">
+            function <span class="apidocSignatureSpan">fstream.</span>DirWriter
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileReader">
+            function <span class="apidocSignatureSpan">fstream.</span>FileReader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileWriter">
+            function <span class="apidocSignatureSpan">fstream.</span>FileWriter
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.LinkReader">
+            function <span class="apidocSignatureSpan">fstream.</span>LinkReader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.LinkWriter">
+            function <span class="apidocSignatureSpan">fstream.</span>LinkWriter
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyReader">
+            function <span class="apidocSignatureSpan">fstream.</span>ProxyReader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyWriter">
+            function <span class="apidocSignatureSpan">fstream.</span>ProxyWriter
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Reader">
+            function <span class="apidocSignatureSpan">fstream.</span>Reader
+            <span class="apidocSignatureSpan">(props, currentStat)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer">
+            function <span class="apidocSignatureSpan">fstream.</span>Writer
+            <span class="apidocSignatureSpan">(props, current)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.collect">
+            function <span class="apidocSignatureSpan">fstream.</span>collect
+            <span class="apidocSignatureSpan">(stream)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.socket_reader">
+            function <span class="apidocSignatureSpan">fstream.</span>socket_reader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>Abstract.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>Dir</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>DirReader.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>DirWriter.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>File</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>FileReader.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>FileWriter.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>Link</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>LinkReader.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>LinkWriter.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>Proxy</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>ProxyReader.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>ProxyWriter.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>Reader.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>Writer.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.</span>socket_reader.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.Abstract">module fstream.Abstract</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Abstract.Abstract">
+            function <span class="apidocSignatureSpan">fstream.</span>Abstract
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Abstract.super_">
+            function <span class="apidocSignatureSpan">fstream.Abstract.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.Abstract.prototype">module fstream.Abstract.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Abstract.prototype.abort">
+            function <span class="apidocSignatureSpan">fstream.Abstract.prototype.</span>abort
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Abstract.prototype.destroy">
+            function <span class="apidocSignatureSpan">fstream.Abstract.prototype.</span>destroy
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Abstract.prototype.error">
+            function <span class="apidocSignatureSpan">fstream.Abstract.prototype.</span>error
+            <span class="apidocSignatureSpan">(msg, code, th)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Abstract.prototype.info">
+            function <span class="apidocSignatureSpan">fstream.Abstract.prototype.</span>info
+            <span class="apidocSignatureSpan">(msg, code)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Abstract.prototype.on">
+            function <span class="apidocSignatureSpan">fstream.Abstract.prototype.</span>on
+            <span class="apidocSignatureSpan">(ev, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Abstract.prototype.warn">
+            function <span class="apidocSignatureSpan">fstream.Abstract.prototype.</span>warn
+            <span class="apidocSignatureSpan">(msg, code)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.Dir">module fstream.Dir</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Dir.Reader">
+            function <span class="apidocSignatureSpan">fstream.Dir.</span>Reader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Dir.Writer">
+            function <span class="apidocSignatureSpan">fstream.Dir.</span>Writer
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.DirReader">module fstream.DirReader</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirReader.DirReader">
+            function <span class="apidocSignatureSpan">fstream.</span>DirReader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirReader.super_">
+            function <span class="apidocSignatureSpan">fstream.DirReader.</span>super_
+            <span class="apidocSignatureSpan">(props, currentStat)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.DirReader.prototype">module fstream.DirReader.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirReader.prototype._getEntries">
+            function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>_getEntries
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirReader.prototype._read">
+            function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>_read
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirReader.prototype.disown">
+            function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>disown
+            <span class="apidocSignatureSpan">(entry)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirReader.prototype.emitEntry">
+            function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>emitEntry
+            <span class="apidocSignatureSpan">(entry)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirReader.prototype.getChildProps">
+            function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>getChildProps
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirReader.prototype.pause">
+            function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>pause
+            <span class="apidocSignatureSpan">(who)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirReader.prototype.resume">
+            function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>resume
+            <span class="apidocSignatureSpan">(who)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.DirWriter">module fstream.DirWriter</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirWriter.DirWriter">
+            function <span class="apidocSignatureSpan">fstream.</span>DirWriter
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirWriter.super_">
+            function <span class="apidocSignatureSpan">fstream.DirWriter.</span>super_
+            <span class="apidocSignatureSpan">(props, current)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.DirWriter.prototype">module fstream.DirWriter.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirWriter.prototype._create">
+            function <span class="apidocSignatureSpan">fstream.DirWriter.prototype.</span>_create
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirWriter.prototype._process">
+            function <span class="apidocSignatureSpan">fstream.DirWriter.prototype.</span>_process
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirWriter.prototype.add">
+            function <span class="apidocSignatureSpan">fstream.DirWriter.prototype.</span>add
+            <span class="apidocSignatureSpan">(entry)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirWriter.prototype.end">
+            function <span class="apidocSignatureSpan">fstream.DirWriter.prototype.</span>end
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.DirWriter.prototype.write">
+            function <span class="apidocSignatureSpan">fstream.DirWriter.prototype.</span>write
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.File">module fstream.File</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.File.Reader">
+            function <span class="apidocSignatureSpan">fstream.File.</span>Reader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.File.Writer">
+            function <span class="apidocSignatureSpan">fstream.File.</span>Writer
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.FileReader">module fstream.FileReader</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileReader.FileReader">
+            function <span class="apidocSignatureSpan">fstream.</span>FileReader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileReader.super_">
+            function <span class="apidocSignatureSpan">fstream.FileReader.</span>super_
+            <span class="apidocSignatureSpan">(props, currentStat)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.FileReader.prototype">module fstream.FileReader.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileReader.prototype._getStream">
+            function <span class="apidocSignatureSpan">fstream.FileReader.prototype.</span>_getStream
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileReader.prototype._read">
+            function <span class="apidocSignatureSpan">fstream.FileReader.prototype.</span>_read
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileReader.prototype.pause">
+            function <span class="apidocSignatureSpan">fstream.FileReader.prototype.</span>pause
+            <span class="apidocSignatureSpan">(who)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileReader.prototype.resume">
+            function <span class="apidocSignatureSpan">fstream.FileReader.prototype.</span>resume
+            <span class="apidocSignatureSpan">(who)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.FileWriter">module fstream.FileWriter</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileWriter.FileWriter">
+            function <span class="apidocSignatureSpan">fstream.</span>FileWriter
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileWriter.super_">
+            function <span class="apidocSignatureSpan">fstream.FileWriter.</span>super_
+            <span class="apidocSignatureSpan">(props, current)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.FileWriter.prototype">module fstream.FileWriter.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileWriter.prototype._create">
+            function <span class="apidocSignatureSpan">fstream.FileWriter.prototype.</span>_create
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileWriter.prototype._finish">
+            function <span class="apidocSignatureSpan">fstream.FileWriter.prototype.</span>_finish
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileWriter.prototype.end">
+            function <span class="apidocSignatureSpan">fstream.FileWriter.prototype.</span>end
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.FileWriter.prototype.write">
+            function <span class="apidocSignatureSpan">fstream.FileWriter.prototype.</span>write
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.Link">module fstream.Link</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Link.Reader">
+            function <span class="apidocSignatureSpan">fstream.Link.</span>Reader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Link.Writer">
+            function <span class="apidocSignatureSpan">fstream.Link.</span>Writer
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.LinkReader">module fstream.LinkReader</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.LinkReader.LinkReader">
+            function <span class="apidocSignatureSpan">fstream.</span>LinkReader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.LinkReader.super_">
+            function <span class="apidocSignatureSpan">fstream.LinkReader.</span>super_
+            <span class="apidocSignatureSpan">(props, currentStat)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.LinkReader.prototype">module fstream.LinkReader.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.LinkReader.prototype._read">
+            function <span class="apidocSignatureSpan">fstream.LinkReader.prototype.</span>_read
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.LinkReader.prototype._stat">
+            function <span class="apidocSignatureSpan">fstream.LinkReader.prototype.</span>_stat
+            <span class="apidocSignatureSpan">(currentStat)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.LinkWriter">module fstream.LinkWriter</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.LinkWriter.LinkWriter">
+            function <span class="apidocSignatureSpan">fstream.</span>LinkWriter
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.LinkWriter.super_">
+            function <span class="apidocSignatureSpan">fstream.LinkWriter.</span>super_
+            <span class="apidocSignatureSpan">(props, current)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.LinkWriter.prototype">module fstream.LinkWriter.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.LinkWriter.prototype._create">
+            function <span class="apidocSignatureSpan">fstream.LinkWriter.prototype.</span>_create
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.LinkWriter.prototype.end">
+            function <span class="apidocSignatureSpan">fstream.LinkWriter.prototype.</span>end
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.Proxy">module fstream.Proxy</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Proxy.Reader">
+            function <span class="apidocSignatureSpan">fstream.Proxy.</span>Reader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Proxy.Writer">
+            function <span class="apidocSignatureSpan">fstream.Proxy.</span>Writer
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.ProxyReader">module fstream.ProxyReader</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyReader.ProxyReader">
+            function <span class="apidocSignatureSpan">fstream.</span>ProxyReader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyReader.super_">
+            function <span class="apidocSignatureSpan">fstream.ProxyReader.</span>super_
+            <span class="apidocSignatureSpan">(props, currentStat)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.ProxyReader.prototype">module fstream.ProxyReader.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyReader.prototype._addProxy">
+            function <span class="apidocSignatureSpan">fstream.ProxyReader.prototype.</span>_addProxy
+            <span class="apidocSignatureSpan">(proxy)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyReader.prototype._stat">
+            function <span class="apidocSignatureSpan">fstream.ProxyReader.prototype.</span>_stat
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyReader.prototype.pause">
+            function <span class="apidocSignatureSpan">fstream.ProxyReader.prototype.</span>pause
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyReader.prototype.resume">
+            function <span class="apidocSignatureSpan">fstream.ProxyReader.prototype.</span>resume
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.ProxyWriter">module fstream.ProxyWriter</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyWriter.ProxyWriter">
+            function <span class="apidocSignatureSpan">fstream.</span>ProxyWriter
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyWriter.super_">
+            function <span class="apidocSignatureSpan">fstream.ProxyWriter.</span>super_
+            <span class="apidocSignatureSpan">(props, current)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.ProxyWriter.prototype">module fstream.ProxyWriter.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyWriter.prototype._addProxy">
+            function <span class="apidocSignatureSpan">fstream.ProxyWriter.prototype.</span>_addProxy
+            <span class="apidocSignatureSpan">(proxy)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyWriter.prototype._stat">
+            function <span class="apidocSignatureSpan">fstream.ProxyWriter.prototype.</span>_stat
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyWriter.prototype.add">
+            function <span class="apidocSignatureSpan">fstream.ProxyWriter.prototype.</span>add
+            <span class="apidocSignatureSpan">(entry)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyWriter.prototype.end">
+            function <span class="apidocSignatureSpan">fstream.ProxyWriter.prototype.</span>end
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.ProxyWriter.prototype.write">
+            function <span class="apidocSignatureSpan">fstream.ProxyWriter.prototype.</span>write
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.Reader">module fstream.Reader</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Reader.Reader">
+            function <span class="apidocSignatureSpan">fstream.</span>Reader
+            <span class="apidocSignatureSpan">(props, currentStat)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Reader.Dir">
+            function <span class="apidocSignatureSpan">fstream.Reader.</span>Dir
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Reader.File">
+            function <span class="apidocSignatureSpan">fstream.Reader.</span>File
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Reader.Link">
+            function <span class="apidocSignatureSpan">fstream.Reader.</span>Link
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Reader.Proxy">
+            function <span class="apidocSignatureSpan">fstream.Reader.</span>Proxy
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Reader.super_">
+            function <span class="apidocSignatureSpan">fstream.Reader.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fstream.Reader.</span>hardLinks</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.Reader.prototype">module fstream.Reader.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Reader.prototype._read">
+            function <span class="apidocSignatureSpan">fstream.Reader.prototype.</span>_read
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Reader.prototype._stat">
+            function <span class="apidocSignatureSpan">fstream.Reader.prototype.</span>_stat
+            <span class="apidocSignatureSpan">(currentStat)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Reader.prototype.pause">
+            function <span class="apidocSignatureSpan">fstream.Reader.prototype.</span>pause
+            <span class="apidocSignatureSpan">(who)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Reader.prototype.pipe">
+            function <span class="apidocSignatureSpan">fstream.Reader.prototype.</span>pipe
+            <span class="apidocSignatureSpan">(dest)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Reader.prototype.resume">
+            function <span class="apidocSignatureSpan">fstream.Reader.prototype.</span>resume
+            <span class="apidocSignatureSpan">(who)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.Writer">module fstream.Writer</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer.Writer">
+            function <span class="apidocSignatureSpan">fstream.</span>Writer
+            <span class="apidocSignatureSpan">(props, current)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer.Dir">
+            function <span class="apidocSignatureSpan">fstream.Writer.</span>Dir
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer.File">
+            function <span class="apidocSignatureSpan">fstream.Writer.</span>File
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer.Link">
+            function <span class="apidocSignatureSpan">fstream.Writer.</span>Link
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer.Proxy">
+            function <span class="apidocSignatureSpan">fstream.Writer.</span>Proxy
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer.super_">
+            function <span class="apidocSignatureSpan">fstream.Writer.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">fstream.Writer.</span>dirmode</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">fstream.Writer.</span>filemode</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.Writer.prototype">module fstream.Writer.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer.prototype._create">
+            function <span class="apidocSignatureSpan">fstream.Writer.prototype.</span>_create
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer.prototype._finish">
+            function <span class="apidocSignatureSpan">fstream.Writer.prototype.</span>_finish
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer.prototype._stat">
+            function <span class="apidocSignatureSpan">fstream.Writer.prototype.</span>_stat
+            <span class="apidocSignatureSpan">(current)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer.prototype.add">
+            function <span class="apidocSignatureSpan">fstream.Writer.prototype.</span>add
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer.prototype.pipe">
+            function <span class="apidocSignatureSpan">fstream.Writer.prototype.</span>pipe
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.Writer.prototype.write">
+            function <span class="apidocSignatureSpan">fstream.Writer.prototype.</span>write
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.socket_reader">module fstream.socket_reader</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.socket_reader.socket_reader">
+            function <span class="apidocSignatureSpan">fstream.</span>socket_reader
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.socket_reader.super_">
+            function <span class="apidocSignatureSpan">fstream.socket_reader.</span>super_
+            <span class="apidocSignatureSpan">(props, currentStat)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fstream.socket_reader.prototype">module fstream.socket_reader.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fstream.socket_reader.prototype._read">
+            function <span class="apidocSignatureSpan">fstream.socket_reader.prototype.</span>_read
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream" id="apidoc.module.fstream">module fstream</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Abstract" id="apidoc.element.fstream.Abstract">
+        function <span class="apidocSignatureSpan">fstream.</span>Abstract
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Abstract() {
+  Stream.call(this)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirReader" id="apidoc.element.fstream.DirReader">
+        function <span class="apidocSignatureSpan">fstream.</span>DirReader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DirReader(props) {
+  var self = this
+  if (!(self instanceof DirReader)) {
+    throw new Error(&#x27;DirReader must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a Directory type
+  if (props.type !== &#x27;Directory&#x27; || !props.Directory) {
+    throw new Error(&#x27;Non-directory type &#x27; + props.type)
+  }
+
+  self.entries = null
+  self._index = -1
+  self._paused = false
+  self._length = -1
+
+  if (props.sort) {
+    this.sort = props.sort
+  }
+
+  Reader.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirWriter" id="apidoc.element.fstream.DirWriter">
+        function <span class="apidocSignatureSpan">fstream.</span>DirWriter
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DirWriter(props) {
+  var self = this
+  if (!(self instanceof DirWriter)) {
+    self.error(&#x27;DirWriter must be called as constructor.&#x27;, null, true)
+  }
+
+  // should already be established as a Directory type
+  if (props.type !== &#x27;Directory&#x27; || !props.Directory) {
+    self.error(&#x27;Non-directory type &#x27; + props.type + &#x27; &#x27; +
+      JSON.stringify(props), null, true)
+  }
+
+  Writer.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileReader" id="apidoc.element.fstream.FileReader">
+        function <span class="apidocSignatureSpan">fstream.</span>FileReader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FileReader(props) {
+  // console.error(&#x22;    FR create&#x22;, props.path, props.size, new Error().stack)
+  var self = this
+  if (!(self instanceof FileReader)) {
+    throw new Error(&#x27;FileReader must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a File type
+  // XXX Todo: preserve hardlinks by tracking dev+inode+nlink,
+  // with a HardLinkReader class.
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;File&#x27; &#x26;&#x26; props.File))) {
+    throw new Error(&#x27;Non-file type &#x27; + props.type)
+  }
+
+  self._buffer = []
+  self._bytesEmitted = 0
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileWriter" id="apidoc.element.fstream.FileWriter">
+        function <span class="apidocSignatureSpan">fstream.</span>FileWriter
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FileWriter(props) {
+  var self = this
+  if (!(self instanceof FileWriter)) {
+    throw new Error(&#x27;FileWriter must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a File type
+  if (props.type !== &#x27;File&#x27; || !props.File) {
+    throw new Error(&#x27;Non-file type &#x27; + props.type)
+  }
+
+  self._buffer = []
+  self._bytesWritten = 0
+
+  Writer.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.LinkReader" id="apidoc.element.fstream.LinkReader">
+        function <span class="apidocSignatureSpan">fstream.</span>LinkReader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LinkReader(props) {
+  var self = this
+  if (!(self instanceof LinkReader)) {
+    throw new Error(&#x27;LinkReader must be called as constructor.&#x27;)
+  }
+
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;SymbolicLink&#x27; &#x26;&#x26; props.SymbolicLink))) {
+    throw new Error(&#x27;Non-link type &#x27; + props.type)
+  }
+
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.LinkWriter" id="apidoc.element.fstream.LinkWriter">
+        function <span class="apidocSignatureSpan">fstream.</span>LinkWriter
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LinkWriter(props) {
+  var self = this
+  if (!(self instanceof LinkWriter)) {
+    throw new Error(&#x27;LinkWriter must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a Link type
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;SymbolicLink&#x27; &#x26;&#x26; props.SymbolicLink))) {
+    throw new Error(&#x27;Non-link type &#x27; + props.type)
+  }
+
+  if (props.linkpath === &#x27;&#x27;) props.linkpath = &#x27;.&#x27;
+  if (!props.linkpath) {
+    self.error(&#x27;Need linkpath property to create &#x27; + props.type)
+  }
+
+  Writer.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyReader" id="apidoc.element.fstream.ProxyReader">
+        function <span class="apidocSignatureSpan">fstream.</span>ProxyReader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ProxyReader(props) {
+  var self = this
+  if (!(self instanceof ProxyReader)) {
+    throw new Error(&#x27;ProxyReader must be called as constructor.&#x27;)
+  }
+
+  self.props = props
+  self._buffer = []
+  self.ready = false
+
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyWriter" id="apidoc.element.fstream.ProxyWriter">
+        function <span class="apidocSignatureSpan">fstream.</span>ProxyWriter
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ProxyWriter(props) {
+  var self = this
+  if (!(self instanceof ProxyWriter)) {
+    throw new Error(&#x27;ProxyWriter must be called as constructor.&#x27;)
+  }
+
+  self.props = props
+  self._needDrain = false
+
+  Writer.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Reader" id="apidoc.element.fstream.Reader">
+        function <span class="apidocSignatureSpan">fstream.</span>Reader
+        <span class="apidocSignatureSpan">(props, currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Reader(props, currentStat) {
+  var self = this
+  if (!(self instanceof Reader)) return new Reader(props, currentStat)
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Reader(dir) to get a DirReader object, etc.
+  // Note that, unlike in the Writer case, ProxyReader is going
+  // to be the *normal* state of affairs, since we rarely know
+  // the type of a file prior to reading it.
+
+  var type
+  var ClassType
+
+  if (props.type &#x26;&#x26; typeof props.type === &#x27;function&#x27;) {
+    type = props.type
+    ClassType = type
+  } else {
+    type = getType(props)
+    ClassType = Reader
+  }
+
+  if (currentStat &#x26;&#x26; !type) {
+    type = getType(currentStat)
+    props[type] = true
+    props.type = type
+  }
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = require(&#x27;./dir-reader.js&#x27;)
+      break
+
+    case &#x27;Link&#x27;:
+    // XXX hard links are just files.
+    // However, it would be good to keep track of files&#x27; dev+inode
+    // and nlink values, and create a HardLinkReader that emits
+    // a linkpath value of the original copy, so that the tar
+    // writer can preserve them.
+    // ClassType = HardLinkReader
+    // break
+
+    case &#x27;File&#x27;:
+      ClassType = require(&#x27;./file-reader.js&#x27;)
+      break
+
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkReader
+      break
+
+    case &#x27;Socket&#x27;:
+      ClassType = require(&#x27;./socket-reader.js&#x27;)
+      break
+
+    case null:
+      ClassType = require(&#x27;./proxy-reader.js&#x27;)
+      break
+  }
+
+  if (!(self instanceof ClassType)) {
+    return new ClassType(props)
+  }
+
+  Abstract.call(self)
+
+  if (!props.path) {
+    self.error(&#x27;Must provide a path&#x27;, null, true)
+  }
+
+  self.readable = true
+  self.writable = false
+
+  self.type = type
+  self.props = props
+  self.depth = props.depth = props.depth || 0
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      // how DOES one create files on the moon?
+      // if the path has spaces in it, then UNC will fail.
+      self._swallowErrors = true
+      // if (self._path.indexOf(&#x22; &#x22;) === -1) {
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    // }
+    }
+  }
+  self.basename = props.basename = path.basename(self.path)
+  self.dirname = props.dirname = path.dirname(self.path)
+
+  // these have served their purpose, and are now just noisy clutter
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+  if (props.sort === &#x27;alpha&#x27;) props.sort = alphasort
+
+  // start the ball rolling.
+  // this will stat the thing, and then call self._read()
+  // to start reading whatever it is.
+  // console.error(&#x22;calling stat&#x22;, props.path, currentStat)
+  self._stat(currentStat)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+So, for example, you can &#x22;write&#x22; a directory, and it&#x27;ll call `mkdir`.  You
+can specify a uid and gid, and it&#x27;ll call `chown`.  You can specify a
+`mtime` and `atime`, and it&#x27;ll call `utimes`.  You can call it a symlink
+and provide a `linkpath` and it&#x27;ll call `symlink`.
+
+Note that it won&#x27;t automatically resolve symbolic links.  So, if you
+call `fstream.<span class="apidocCodeKeywordSpan">Reader</span>(&#x27;/some/symlink&#x27;)` then you&#x27;ll get an object
+that stats and then ends immediately (since it has no data).  To follow
+symbolic links, do this: `fstream.Reader({path:&#x27;/some/symlink&#x27;, follow:
+true })`.
+
+There are various checks to make sure that the bytes emitted are the
+same as the intended size, if the size is set.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer" id="apidoc.element.fstream.Writer">
+        function <span class="apidocSignatureSpan">fstream.</span>Writer
+        <span class="apidocSignatureSpan">(props, current)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Writer(props, current) {
+  var self = this
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Writer(dir) to get a DirWriter object, etc.
+  var type = getType(props)
+  var ClassType = Writer
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = DirWriter
+      break
+    case &#x27;File&#x27;:
+      ClassType = FileWriter
+      break
+    case &#x27;Link&#x27;:
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkWriter
+      break
+    case null:
+    default:
+      // Don&#x27;t know yet what type to create, so we wrap in a proxy.
+      ClassType = ProxyWriter
+      break
+  }
+
+  if (!(self instanceof ClassType)) return new ClassType(props)
+
+  // now get down to business.
+
+  Abstract.call(self)
+
+  if (!props.path) self.error(&#x27;Must provide a path&#x27;, null, true)
+
+  // props is what we want to set.
+  // set some convenience properties as well.
+  self.type = props.type
+  self.props = props
+  self.depth = props.depth || 0
+  self.clobber = props.clobber === false ? props.clobber : true
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      self._swallowErrors = true
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    }
+  }
+  self.basename = path.basename(props.path)
+  self.dirname = path.dirname(props.path)
+  self.linkpath = props.linkpath || null
+
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+
+  if (typeof props.mode === &#x27;string&#x27;) {
+    props.mode = parseInt(props.mode, 8)
+  }
+
+  self.readable = false
+  self.writable = true
+
+  // buffer until ready, or while handling another entry
+  self._buffer = []
+  self.ready = false
+
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+
+  // start the ball rolling.
+  // this checks what&#x27;s there already, and then calls
+  // self._create() to call the impl-specific creation stuff.
+  self._stat(current)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+There are various checks to make sure that the bytes emitted are the
+same as the intended size, if the size is set.
+
+## Examples
+
+```javascript
+fstream
+  .<span class="apidocCodeKeywordSpan">Writer</span>({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .write(&#x22;hello\n&#x22;)
+  .end()
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.collect" id="apidoc.element.fstream.collect">
+        function <span class="apidocSignatureSpan">fstream.</span>collect
+        <span class="apidocSignatureSpan">(stream)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function collect(stream) {
+  if (stream._collected) return
+
+  if (stream._paused) return stream.on(&#x27;resume&#x27;, collect.bind(null, stream))
+
+  stream._collected = true
+  stream.pause()
+
+  stream.on(&#x27;data&#x27;, save)
+  stream.on(&#x27;end&#x27;, save)
+  var buf = []
+  function save (b) {
+    if (typeof b === &#x27;string&#x27;) b = new Buffer(b)
+    if (Buffer.isBuffer(b) &#x26;&#x26; !b.length) return
+    buf.push(b)
+  }
+
+  stream.on(&#x27;entry&#x27;, saveEntry)
+  var entryBuffer = []
+  function saveEntry (e) {
+    collect(e)
+    entryBuffer.push(e)
+  }
+
+  stream.on(&#x27;proxy&#x27;, proxyPause)
+  function proxyPause (p) {
+    p.pause()
+  }
+
+  // replace the pipe method with a new version that will
+  // unlock the buffered stuff.  if you just call .pipe()
+  // without a destination, then it&#x27;ll re-play the events.
+  stream.pipe = (function (orig) {
+    return function (dest) {
+      // console.error(&#x27; === open the pipes&#x27;, dest &#x26;&#x26; dest.path)
+
+      // let the entries flow through one at a time.
+      // Once they&#x27;re all done, then we can resume completely.
+      var e = 0
+      ;(function unblockEntry () {
+        var entry = entryBuffer[e++]
+        // console.error(&#x22; ==== unblock entry&#x22;, entry &#x26;&#x26; entry.path)
+        if (!entry) return resume()
+        entry.on(&#x27;end&#x27;, unblockEntry)
+        if (dest) dest.add(entry)
+        else stream.emit(&#x27;entry&#x27;, entry)
+      })()
+
+      function resume () {
+        stream.removeListener(&#x27;entry&#x27;, saveEntry)
+        stream.removeListener(&#x27;data&#x27;, save)
+        stream.removeListener(&#x27;end&#x27;, save)
+
+        stream.pipe = orig
+        if (dest) stream.pipe(dest)
+
+        buf.forEach(function (b) {
+          if (b) stream.emit(&#x27;data&#x27;, b)
+          else stream.emit(&#x27;end&#x27;)
+        })
+
+        stream.resume()
+      }
+
+      return dest
+    }
+  })(stream.pipe)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.socket_reader" id="apidoc.element.fstream.socket_reader">
+        function <span class="apidocSignatureSpan">fstream.</span>socket_reader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SocketReader(props) {
+  var self = this
+  if (!(self instanceof SocketReader)) {
+    throw new Error(&#x27;SocketReader must be called as constructor.&#x27;)
+  }
+
+  if (!(props.type === &#x27;Socket&#x27; &#x26;&#x26; props.Socket)) {
+    throw new Error(&#x27;Non-socket type &#x27; + props.type)
+  }
+
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.Abstract" id="apidoc.module.fstream.Abstract">module fstream.Abstract</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Abstract.Abstract" id="apidoc.element.fstream.Abstract.Abstract">
+        function <span class="apidocSignatureSpan">fstream.</span>Abstract
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Abstract() {
+  Stream.call(this)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Abstract.super_" id="apidoc.element.fstream.Abstract.super_">
+        function <span class="apidocSignatureSpan">fstream.Abstract.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Stream() {
+  EE.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.Abstract.prototype" id="apidoc.module.fstream.Abstract.prototype">module fstream.Abstract.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Abstract.prototype.abort" id="apidoc.element.fstream.Abstract.prototype.abort">
+        function <span class="apidocSignatureSpan">fstream.Abstract.prototype.</span>abort
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">abort = function () {
+  this._aborted = true
+  this.emit(&#x27;abort&#x27;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Abstract.prototype.destroy" id="apidoc.element.fstream.Abstract.prototype.destroy">
+        function <span class="apidocSignatureSpan">fstream.Abstract.prototype.</span>destroy
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">destroy = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Abstract.prototype.error" id="apidoc.element.fstream.Abstract.prototype.error">
+        function <span class="apidocSignatureSpan">fstream.Abstract.prototype.</span>error
+        <span class="apidocSignatureSpan">(msg, code, th)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">error = function (msg, code, th) {
+  var er = decorate(msg, code, this)
+  if (th) throw er
+  else this.emit(&#x27;error&#x27;, er)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+
+  // replace the pipe method with a new version that will
+  // unlock the buffered stuff.  if you just call .pipe()
+  // without a destination, then it&#x27;ll re-play the events.
+  stream.pipe = (function (orig) {
+    return function (dest) {
+// console.<span class="apidocCodeKeywordSpan">error</span>(&#x27; === open the pipes&#x27;, dest &#x26;&#x26; dest.path)
+
+// let the entries flow through one at a time.
+// Once they&#x27;re all done, then we can resume completely.
+var e = 0
+;(function unblockEntry () {
+  var entry = entryBuffer[e++]
+  // console.error(&#x22; ==== unblock entry&#x22;, entry &#x26;&#x26; entry.path)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Abstract.prototype.info" id="apidoc.element.fstream.Abstract.prototype.info">
+        function <span class="apidocSignatureSpan">fstream.Abstract.prototype.</span>info
+        <span class="apidocSignatureSpan">(msg, code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">info = function (msg, code) {
+  this.emit(&#x27;info&#x27;, msg, code)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Abstract.prototype.on" id="apidoc.element.fstream.Abstract.prototype.on">
+        function <span class="apidocSignatureSpan">fstream.Abstract.prototype.</span>on
+        <span class="apidocSignatureSpan">(ev, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">on = function (ev, fn) {
+  if (ev === &#x27;ready&#x27; &#x26;&#x26; this.ready) {
+    process.nextTick(fn.bind(this))
+  } else {
+    Stream.prototype.on.call(this, ev, fn)
+  }
+  return this
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+
+module.exports = collect
+
+function collect (stream) {
+if (stream._collected) return
+
+if (stream._paused) return stream.<span class="apidocCodeKeywordSpan">on</span>(&#x27;resume&#x27;, collect.bind(null, stream))
+
+stream._collected = true
+stream.pause()
+
+stream.on(&#x27;data&#x27;, save)
+stream.on(&#x27;end&#x27;, save)
+var buf = []
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Abstract.prototype.warn" id="apidoc.element.fstream.Abstract.prototype.warn">
+        function <span class="apidocSignatureSpan">fstream.Abstract.prototype.</span>warn
+        <span class="apidocSignatureSpan">(msg, code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">warn = function (msg, code) {
+  var self = this
+  var er = decorate(msg, code, self)
+  if (!self.listeners(&#x27;warn&#x27;)) {
+    console.error(&#x27;%s %s\n&#x27; +
+    &#x27;path = %s\n&#x27; +
+    &#x27;syscall = %s\n&#x27; +
+    &#x27;fstream_type = %s\n&#x27; +
+    &#x27;fstream_path = %s\n&#x27; +
+    &#x27;fstream_unc_path = %s\n&#x27; +
+    &#x27;fstream_class = %s\n&#x27; +
+    &#x27;fstream_stack =\n%s\n&#x27;,
+      code || &#x27;UNKNOWN&#x27;,
+      er.stack,
+      er.path,
+      er.syscall,
+      er.fstream_type,
+      er.fstream_path,
+      er.fstream_unc_path,
+      er.fstream_class,
+      er.fstream_stack.join(&#x27;\n&#x27;))
+  } else {
+    self.emit(&#x27;warn&#x27;, er)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.Dir" id="apidoc.module.fstream.Dir">module fstream.Dir</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Dir.Reader" id="apidoc.element.fstream.Dir.Reader">
+        function <span class="apidocSignatureSpan">fstream.Dir.</span>Reader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DirReader(props) {
+  var self = this
+  if (!(self instanceof DirReader)) {
+    throw new Error(&#x27;DirReader must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a Directory type
+  if (props.type !== &#x27;Directory&#x27; || !props.Directory) {
+    throw new Error(&#x27;Non-directory type &#x27; + props.type)
+  }
+
+  self.entries = null
+  self._index = -1
+  self._paused = false
+  self._length = -1
+
+  if (props.sort) {
+    this.sort = props.sort
+  }
+
+  Reader.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+So, for example, you can &#x22;write&#x22; a directory, and it&#x27;ll call `mkdir`.  You
+can specify a uid and gid, and it&#x27;ll call `chown`.  You can specify a
+`mtime` and `atime`, and it&#x27;ll call `utimes`.  You can call it a symlink
+and provide a `linkpath` and it&#x27;ll call `symlink`.
+
+Note that it won&#x27;t automatically resolve symbolic links.  So, if you
+call `fstream.<span class="apidocCodeKeywordSpan">Reader</span>(&#x27;/some/symlink&#x27;)` then you&#x27;ll get an object
+that stats and then ends immediately (since it has no data).  To follow
+symbolic links, do this: `fstream.Reader({path:&#x27;/some/symlink&#x27;, follow:
+true })`.
+
+There are various checks to make sure that the bytes emitted are the
+same as the intended size, if the size is set.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Dir.Writer" id="apidoc.element.fstream.Dir.Writer">
+        function <span class="apidocSignatureSpan">fstream.Dir.</span>Writer
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DirWriter(props) {
+  var self = this
+  if (!(self instanceof DirWriter)) {
+    self.error(&#x27;DirWriter must be called as constructor.&#x27;, null, true)
+  }
+
+  // should already be established as a Directory type
+  if (props.type !== &#x27;Directory&#x27; || !props.Directory) {
+    self.error(&#x27;Non-directory type &#x27; + props.type + &#x27; &#x27; +
+      JSON.stringify(props), null, true)
+  }
+
+  Writer.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+There are various checks to make sure that the bytes emitted are the
+same as the intended size, if the size is set.
+
+## Examples
+
+```javascript
+fstream
+  .<span class="apidocCodeKeywordSpan">Writer</span>({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .write(&#x22;hello\n&#x22;)
+  .end()
+```
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.DirReader" id="apidoc.module.fstream.DirReader">module fstream.DirReader</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirReader.DirReader" id="apidoc.element.fstream.DirReader.DirReader">
+        function <span class="apidocSignatureSpan">fstream.</span>DirReader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DirReader(props) {
+  var self = this
+  if (!(self instanceof DirReader)) {
+    throw new Error(&#x27;DirReader must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a Directory type
+  if (props.type !== &#x27;Directory&#x27; || !props.Directory) {
+    throw new Error(&#x27;Non-directory type &#x27; + props.type)
+  }
+
+  self.entries = null
+  self._index = -1
+  self._paused = false
+  self._length = -1
+
+  if (props.sort) {
+    this.sort = props.sort
+  }
+
+  Reader.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirReader.super_" id="apidoc.element.fstream.DirReader.super_">
+        function <span class="apidocSignatureSpan">fstream.DirReader.</span>super_
+        <span class="apidocSignatureSpan">(props, currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Reader(props, currentStat) {
+  var self = this
+  if (!(self instanceof Reader)) return new Reader(props, currentStat)
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Reader(dir) to get a DirReader object, etc.
+  // Note that, unlike in the Writer case, ProxyReader is going
+  // to be the *normal* state of affairs, since we rarely know
+  // the type of a file prior to reading it.
+
+  var type
+  var ClassType
+
+  if (props.type &#x26;&#x26; typeof props.type === &#x27;function&#x27;) {
+    type = props.type
+    ClassType = type
+  } else {
+    type = getType(props)
+    ClassType = Reader
+  }
+
+  if (currentStat &#x26;&#x26; !type) {
+    type = getType(currentStat)
+    props[type] = true
+    props.type = type
+  }
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = require(&#x27;./dir-reader.js&#x27;)
+      break
+
+    case &#x27;Link&#x27;:
+    // XXX hard links are just files.
+    // However, it would be good to keep track of files&#x27; dev+inode
+    // and nlink values, and create a HardLinkReader that emits
+    // a linkpath value of the original copy, so that the tar
+    // writer can preserve them.
+    // ClassType = HardLinkReader
+    // break
+
+    case &#x27;File&#x27;:
+      ClassType = require(&#x27;./file-reader.js&#x27;)
+      break
+
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkReader
+      break
+
+    case &#x27;Socket&#x27;:
+      ClassType = require(&#x27;./socket-reader.js&#x27;)
+      break
+
+    case null:
+      ClassType = require(&#x27;./proxy-reader.js&#x27;)
+      break
+  }
+
+  if (!(self instanceof ClassType)) {
+    return new ClassType(props)
+  }
+
+  Abstract.call(self)
+
+  if (!props.path) {
+    self.error(&#x27;Must provide a path&#x27;, null, true)
+  }
+
+  self.readable = true
+  self.writable = false
+
+  self.type = type
+  self.props = props
+  self.depth = props.depth = props.depth || 0
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      // how DOES one create files on the moon?
+      // if the path has spaces in it, then UNC will fail.
+      self._swallowErrors = true
+      // if (self._path.indexOf(&#x22; &#x22;) === -1) {
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    // }
+    }
+  }
+  self.basename = props.basename = path.basename(self.path)
+  self.dirname = props.dirname = path.dirname(self.path)
+
+  // these have served their purpose, and are now just noisy clutter
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+  if (props.sort === &#x27;alpha&#x27;) props.sort = alphasort
+
+  // start the ball rolling.
+  // this will stat the thing, and then call self._read()
+  // to start reading whatever it is.
+  // console.error(&#x22;calling stat&#x22;, props.path, currentStat)
+  self._stat(currentStat)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.DirReader.prototype" id="apidoc.module.fstream.DirReader.prototype">module fstream.DirReader.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirReader.prototype._getEntries" id="apidoc.element.fstream.DirReader.prototype._getEntries">
+        function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>_getEntries
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_getEntries = function () {
+  var self = this
+
+  // race condition.  might pause() before calling _getEntries,
+  // and then resume, and try to get them a second time.
+  if (self._gotEntries) return
+  self._gotEntries = true
+
+  fs.readdir(self._path, function (er, entries) {
+    if (er) return self.error(er)
+
+    self.entries = entries
+
+    self.emit(&#x27;entries&#x27;, entries)
+    if (self._paused) self.once(&#x27;resume&#x27;, processEntries)
+    else processEntries()
+
+    function processEntries () {
+      self._length = self.entries.length
+      if (typeof self.sort === &#x27;function&#x27;) {
+        self.entries = self.entries.sort(self.sort.bind(self))
+      }
+      self._read()
+    }
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirReader.prototype._read" id="apidoc.element.fstream.DirReader.prototype._read">
+        function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>_read
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_read = function () {
+  var self = this
+
+  if (!self.entries) return self._getEntries()
+
+  if (self._paused || self._currentEntry || self._aborted) {
+    // console.error(&#x27;DR paused=%j, current=%j, aborted=%j&#x27;, self._paused, !!self._currentEntry, self._aborted)
+    return
+  }
+
+  self._index++
+  if (self._index &#x3e;= self.entries.length) {
+    if (!self._ended) {
+      self._ended = true
+      self.emit(&#x27;end&#x27;)
+      self.emit(&#x27;close&#x27;)
+    }
+    return
+  }
+
+  // ok, handle this one, then.
+
+  // save creating a proxy, by stat&#x27;ing the thing now.
+  var p = path.resolve(self._path, self.entries[self._index])
+  assert(p !== self._path)
+  assert(self.entries[self._index])
+
+  // set this to prevent trying to _read() again in the stat time.
+  self._currentEntry = p
+  fs[ self.props.follow ? &#x27;stat&#x27; : &#x27;lstat&#x27; ](p, function (er, stat) {
+    if (er) return self.error(er)
+
+    var who = self._proxy || self
+
+    stat.path = p
+    stat.basename = path.basename(p)
+    stat.dirname = path.dirname(p)
+    var childProps = self.getChildProps.call(who, stat)
+    childProps.path = p
+    childProps.basename = path.basename(p)
+    childProps.dirname = path.dirname(p)
+
+    var entry = Reader(childProps, stat)
+
+    // console.error(&#x22;DR Entry&#x22;, p, stat.size)
+
+    self._currentEntry = entry
+
+    // &#x22;entry&#x22; events are for direct entries in a specific dir.
+    // &#x22;child&#x22; events are for any and all children at all levels.
+    // This nomenclature is not completely final.
+
+    entry.on(&#x27;pause&#x27;, function (who) {
+      if (!self._paused &#x26;&#x26; !entry._disowned) {
+        self.pause(who)
+      }
+    })
+
+    entry.on(&#x27;resume&#x27;, function (who) {
+      if (self._paused &#x26;&#x26; !entry._disowned) {
+        self.resume(who)
+      }
+    })
+
+    entry.on(&#x27;stat&#x27;, function (props) {
+      self.emit(&#x27;_entryStat&#x27;, entry, props)
+      if (entry._aborted) return
+      if (entry._paused) {
+        entry.once(&#x27;resume&#x27;, function () {
+          self.emit(&#x27;entryStat&#x27;, entry, props)
+        })
+      } else self.emit(&#x27;entryStat&#x27;, entry, props)
+    })
+
+    entry.on(&#x27;ready&#x27;, function EMITCHILD () {
+      // console.error(&#x22;DR emit child&#x22;, entry._path)
+      if (self._paused) {
+        // console.error(&#x22;  DR emit child - try again later&#x22;)
+        // pause the child, and emit the &#x22;entry&#x22; event once we drain.
+        // console.error(&#x22;DR pausing child entry&#x22;)
+        entry.pause(self)
+        return self.once(&#x27;resume&#x27;, EMITCHILD)
+      }
+
+      // skip over sockets.  they can&#x27;t be piped around properly,
+      // so there&#x27;s really no sense even acknowledging them.
+      // if someone really wants to see them, they can listen to
+      // the &#x22;socket&#x22; events.
+      if (entry.type === &#x27;Socket&#x27;) {
+        self.emit(&#x27;socket&#x27;, entry)
+      } else {
+        self.emitEntry(entry)
+      }
+    })
+
+    var ended = false
+    entry.on(&#x27;close&#x27;, onend)
+    entry.on(&#x27;disown&#x27;, onend)
+    function onend () {
+      if (ended) return
+      ended = true
+      self.emit(&#x27;childEnd&#x27;, entry)
+      self.emit(&#x27;entryEnd&#x27;, entry)
+      self._currentEntry = null
+      if (!self._paused) {
+        self._read()
+      }
+    }
+
+    // XXX Remove this.  Works in node as of 0.6.2 or so.
+    // Long filenames should not break stuff.
+    entry.on(&#x27;error&#x27;, function (er) {
+      if (entry._swallowErrors) {
+        self.warn(er)
+        entry.emit(&#x27;end&#x27;)
+        entry.emit(&#x27;close&#x27;)
+      } else {
+        self.emit(&#x27;error&#x27;, er)
+      }
+    })
+
+    // proxy up some events.
+    ;[
+      &#x27;child&#x27;,
+      &#x27;childEnd&#x27;,
+      &#x27;warn&#x27;
+    ].forEach(function (ev) {
+      entry.on(ev, self.emit.bind(self, ev))
+    })
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirReader.prototype.disown" id="apidoc.element.fstream.DirReader.prototype.disown">
+        function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>disown
+        <span class="apidocSignatureSpan">(entry)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">disown = function (entry) {
+  entry.emit(&#x27;beforeDisown&#x27;)
+  entry._disowned = true
+  entry.parent = entry.root = null
+  if (entry === this._currentEntry) {
+    this._currentEntry = null
+  }
+  entry.emit(&#x27;disown&#x27;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirReader.prototype.emitEntry" id="apidoc.element.fstream.DirReader.prototype.emitEntry">
+        function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>emitEntry
+        <span class="apidocSignatureSpan">(entry)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">emitEntry = function (entry) {
+  this.emit(&#x27;entry&#x27;, entry)
+  this.emit(&#x27;child&#x27;, entry)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirReader.prototype.getChildProps" id="apidoc.element.fstream.DirReader.prototype.getChildProps">
+        function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>getChildProps
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getChildProps = function () {
+  return {
+    depth: this.depth + 1,
+    root: this.root || this,
+    parent: this,
+    follow: this.follow,
+    filter: this.filter,
+    sort: this.props.sort,
+    hardlinks: this.props.hardlinks
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirReader.prototype.pause" id="apidoc.element.fstream.DirReader.prototype.pause">
+        function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>pause
+        <span class="apidocSignatureSpan">(who)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function (who) {
+  var self = this
+  if (self._paused) return
+  who = who || self
+  self._paused = true
+  if (self._currentEntry &#x26;&#x26; self._currentEntry.pause) {
+    self._currentEntry.pause(who)
+  }
+  self.emit(&#x27;pause&#x27;, who)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function collect (stream) {
+if (stream._collected) return
+
+if (stream._paused) return stream.on(&#x27;resume&#x27;, collect.bind(null, stream))
+
+stream._collected = true
+stream.<span class="apidocCodeKeywordSpan">pause</span>()
+
+stream.on(&#x27;data&#x27;, save)
+stream.on(&#x27;end&#x27;, save)
+var buf = []
+function save (b) {
+  if (typeof b === &#x27;string&#x27;) b = new Buffer(b)
+  if (Buffer.isBuffer(b) &#x26;&#x26; !b.length) return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirReader.prototype.resume" id="apidoc.element.fstream.DirReader.prototype.resume">
+        function <span class="apidocSignatureSpan">fstream.DirReader.prototype.</span>resume
+        <span class="apidocSignatureSpan">(who)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function (who) {
+  var self = this
+  if (!self._paused) return
+  who = who || self
+
+  self._paused = false
+  // console.error(&#x27;DR Emit Resume&#x27;, self._path)
+  self.emit(&#x27;resume&#x27;, who)
+  if (self._paused) {
+    // console.error(&#x27;DR Re-paused&#x27;, self._path)
+    return
+  }
+
+  if (self._currentEntry) {
+    if (self._currentEntry.resume) self._currentEntry.resume(who)
+  } else self._read()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        if (dest) stream.pipe(dest)
+
+        buf.forEach(function (b) {
+          if (b) stream.emit(&#x27;data&#x27;, b)
+          else stream.emit(&#x27;end&#x27;)
+        })
+
+        stream.<span class="apidocCodeKeywordSpan">resume</span>()
+      }
+
+      return dest
+    }
+  })(stream.pipe)
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.DirWriter" id="apidoc.module.fstream.DirWriter">module fstream.DirWriter</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirWriter.DirWriter" id="apidoc.element.fstream.DirWriter.DirWriter">
+        function <span class="apidocSignatureSpan">fstream.</span>DirWriter
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DirWriter(props) {
+  var self = this
+  if (!(self instanceof DirWriter)) {
+    self.error(&#x27;DirWriter must be called as constructor.&#x27;, null, true)
+  }
+
+  // should already be established as a Directory type
+  if (props.type !== &#x27;Directory&#x27; || !props.Directory) {
+    self.error(&#x27;Non-directory type &#x27; + props.type + &#x27; &#x27; +
+      JSON.stringify(props), null, true)
+  }
+
+  Writer.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirWriter.super_" id="apidoc.element.fstream.DirWriter.super_">
+        function <span class="apidocSignatureSpan">fstream.DirWriter.</span>super_
+        <span class="apidocSignatureSpan">(props, current)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Writer(props, current) {
+  var self = this
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Writer(dir) to get a DirWriter object, etc.
+  var type = getType(props)
+  var ClassType = Writer
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = DirWriter
+      break
+    case &#x27;File&#x27;:
+      ClassType = FileWriter
+      break
+    case &#x27;Link&#x27;:
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkWriter
+      break
+    case null:
+    default:
+      // Don&#x27;t know yet what type to create, so we wrap in a proxy.
+      ClassType = ProxyWriter
+      break
+  }
+
+  if (!(self instanceof ClassType)) return new ClassType(props)
+
+  // now get down to business.
+
+  Abstract.call(self)
+
+  if (!props.path) self.error(&#x27;Must provide a path&#x27;, null, true)
+
+  // props is what we want to set.
+  // set some convenience properties as well.
+  self.type = props.type
+  self.props = props
+  self.depth = props.depth || 0
+  self.clobber = props.clobber === false ? props.clobber : true
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      self._swallowErrors = true
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    }
+  }
+  self.basename = path.basename(props.path)
+  self.dirname = path.dirname(props.path)
+  self.linkpath = props.linkpath || null
+
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+
+  if (typeof props.mode === &#x27;string&#x27;) {
+    props.mode = parseInt(props.mode, 8)
+  }
+
+  self.readable = false
+  self.writable = true
+
+  // buffer until ready, or while handling another entry
+  self._buffer = []
+  self.ready = false
+
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+
+  // start the ball rolling.
+  // this checks what&#x27;s there already, and then calls
+  // self._create() to call the impl-specific creation stuff.
+  self._stat(current)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.DirWriter.prototype" id="apidoc.module.fstream.DirWriter.prototype">module fstream.DirWriter.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirWriter.prototype._create" id="apidoc.element.fstream.DirWriter.prototype._create">
+        function <span class="apidocSignatureSpan">fstream.DirWriter.prototype.</span>_create
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_create = function () {
+  var self = this
+  mkdir(self._path, Writer.dirmode, function (er) {
+    if (er) return self.error(er)
+    // ready to start getting entries!
+    self.ready = true
+    self.emit(&#x27;ready&#x27;)
+    self._process()
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirWriter.prototype._process" id="apidoc.element.fstream.DirWriter.prototype._process">
+        function <span class="apidocSignatureSpan">fstream.DirWriter.prototype.</span>_process
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_process = function () {
+  var self = this
+
+  // console.error(&#x27;DW Process p=%j&#x27;, self._processing, self.basename)
+
+  if (self._processing) return
+
+  var entry = self._buffer.shift()
+  if (!entry) {
+    // console.error(&#x22;DW Drain&#x22;)
+    self.emit(&#x27;drain&#x27;)
+    if (self._ended) self._finish()
+    return
+  }
+
+  self._processing = true
+  // console.error(&#x22;DW Entry&#x22;, entry._path)
+
+  self.emit(&#x27;entry&#x27;, entry)
+
+  // ok, add this entry
+  //
+  // don&#x27;t allow recursive copying
+  var p = entry
+  var pp
+  do {
+    pp = p._path || p.path
+    if (pp === self.root._path || pp === self._path ||
+      (pp &#x26;&#x26; pp.indexOf(self._path) === 0)) {
+      // console.error(&#x27;DW Exit (recursive)&#x27;, entry.basename, self._path)
+      self._processing = false
+      if (entry._collected) entry.pipe()
+      return self._process()
+    }
+    p = p.parent
+  } while (p)
+
+  // console.error(&#x22;DW not recursive&#x22;)
+
+  // chop off the entry&#x27;s root dir, replace with ours
+  var props = {
+    parent: self,
+    root: self.root || self,
+    type: entry.type,
+    depth: self.depth + 1
+  }
+
+  pp = entry._path || entry.path || entry.props.path
+  if (entry.parent) {
+    pp = pp.substr(entry.parent._path.length + 1)
+  }
+  // get rid of any ../../ shenanigans
+  props.path = path.join(self.path, path.join(&#x27;/&#x27;, pp))
+
+  // if i have a filter, the child should inherit it.
+  props.filter = self.filter
+
+  // all the rest of the stuff, copy over from the source.
+  Object.keys(entry.props).forEach(function (k) {
+    if (!props.hasOwnProperty(k)) {
+      props[k] = entry.props[k]
+    }
+  })
+
+  // not sure at this point what kind of writer this is.
+  var child = self._currentChild = new Writer(props)
+  child.on(&#x27;ready&#x27;, function () {
+    // console.error(&#x22;DW Child Ready&#x22;, child.type, child._path)
+    // console.error(&#x22;  resuming&#x22;, entry._path)
+    entry.pipe(child)
+    entry.resume()
+  })
+
+  // XXX Make this work in node.
+  // Long filenames should not break stuff.
+  child.on(&#x27;error&#x27;, function (er) {
+    if (child._swallowErrors) {
+      self.warn(er)
+      child.emit(&#x27;end&#x27;)
+      child.emit(&#x27;close&#x27;)
+    } else {
+      self.emit(&#x27;error&#x27;, er)
+    }
+  })
+
+  // we fire _end internally *after* end, so that we don&#x27;t move on
+  // until any &#x22;end&#x22; listeners have had their chance to do stuff.
+  child.on(&#x27;close&#x27;, onend)
+  var ended = false
+  function onend () {
+    if (ended) return
+    ended = true
+    // console.error(&#x22;* DW Child end&#x22;, child.basename)
+    self._currentChild = null
+    self._processing = false
+    self._process()
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirWriter.prototype.add" id="apidoc.element.fstream.DirWriter.prototype.add">
+        function <span class="apidocSignatureSpan">fstream.DirWriter.prototype.</span>add
+        <span class="apidocSignatureSpan">(entry)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function (entry) {
+  var self = this
+
+  // console.error(&#x27;\tadd&#x27;, entry._path, &#x27;-&#x3e;&#x27;, self._path)
+  collect(entry)
+  if (!self.ready || self._currentEntry) {
+    self._buffer.push(entry)
+    return false
+  }
+
+  // create a new writer, and pipe the incoming entry into it.
+  if (self._ended) {
+    return self.error(&#x27;add after end&#x27;)
+  }
+
+  self._buffer.push(entry)
+  self._process()
+
+  return this._buffer.length === 0
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Once they&#x27;re all done, then we can resume completely.
+var e = 0
+;(function unblockEntry () {
+  var entry = entryBuffer[e++]
+  // console.error(&#x22; ==== unblock entry&#x22;, entry &#x26;&#x26; entry.path)
+  if (!entry) return resume()
+  entry.on(&#x27;end&#x27;, unblockEntry)
+  if (dest) dest.<span class="apidocCodeKeywordSpan">add</span>(entry)
+  else stream.emit(&#x27;entry&#x27;, entry)
+})()
+
+function resume () {
+  stream.removeListener(&#x27;entry&#x27;, saveEntry)
+  stream.removeListener(&#x27;data&#x27;, save)
+  stream.removeListener(&#x27;end&#x27;, save)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirWriter.prototype.end" id="apidoc.element.fstream.DirWriter.prototype.end">
+        function <span class="apidocSignatureSpan">fstream.DirWriter.prototype.</span>end
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function () {
+  this._ended = true
+  this._process()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+fstream
+  .Writer({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .write(&#x22;hello\n&#x22;)
+  .<span class="apidocCodeKeywordSpan">end</span>()
+```
+
+This will create the directories if they&#x27;re missing, and then write
+`hello\n` into the file, chmod it to 0755, and assert that 6 bytes have
+been written when it&#x27;s done.
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.DirWriter.prototype.write" id="apidoc.element.fstream.DirWriter.prototype.write">
+        function <span class="apidocSignatureSpan">fstream.DirWriter.prototype.</span>write
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function () {
+  return true
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+fstream
+  .Writer({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .<span class="apidocCodeKeywordSpan">write</span>(&#x22;hello\n&#x22;)
+  .end()
+```
+
+This will create the directories if they&#x27;re missing, and then write
+`hello\n` into the file, chmod it to 0755, and assert that 6 bytes have
+been written when it&#x27;s done.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.File" id="apidoc.module.fstream.File">module fstream.File</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.File.Reader" id="apidoc.element.fstream.File.Reader">
+        function <span class="apidocSignatureSpan">fstream.File.</span>Reader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FileReader(props) {
+  // console.error(&#x22;    FR create&#x22;, props.path, props.size, new Error().stack)
+  var self = this
+  if (!(self instanceof FileReader)) {
+    throw new Error(&#x27;FileReader must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a File type
+  // XXX Todo: preserve hardlinks by tracking dev+inode+nlink,
+  // with a HardLinkReader class.
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;File&#x27; &#x26;&#x26; props.File))) {
+    throw new Error(&#x27;Non-file type &#x27; + props.type)
+  }
+
+  self._buffer = []
+  self._bytesEmitted = 0
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+So, for example, you can &#x22;write&#x22; a directory, and it&#x27;ll call `mkdir`.  You
+can specify a uid and gid, and it&#x27;ll call `chown`.  You can specify a
+`mtime` and `atime`, and it&#x27;ll call `utimes`.  You can call it a symlink
+and provide a `linkpath` and it&#x27;ll call `symlink`.
+
+Note that it won&#x27;t automatically resolve symbolic links.  So, if you
+call `fstream.<span class="apidocCodeKeywordSpan">Reader</span>(&#x27;/some/symlink&#x27;)` then you&#x27;ll get an object
+that stats and then ends immediately (since it has no data).  To follow
+symbolic links, do this: `fstream.Reader({path:&#x27;/some/symlink&#x27;, follow:
+true })`.
+
+There are various checks to make sure that the bytes emitted are the
+same as the intended size, if the size is set.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.File.Writer" id="apidoc.element.fstream.File.Writer">
+        function <span class="apidocSignatureSpan">fstream.File.</span>Writer
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FileWriter(props) {
+  var self = this
+  if (!(self instanceof FileWriter)) {
+    throw new Error(&#x27;FileWriter must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a File type
+  if (props.type !== &#x27;File&#x27; || !props.File) {
+    throw new Error(&#x27;Non-file type &#x27; + props.type)
+  }
+
+  self._buffer = []
+  self._bytesWritten = 0
+
+  Writer.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+There are various checks to make sure that the bytes emitted are the
+same as the intended size, if the size is set.
+
+## Examples
+
+```javascript
+fstream
+  .<span class="apidocCodeKeywordSpan">Writer</span>({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .write(&#x22;hello\n&#x22;)
+  .end()
+```
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.FileReader" id="apidoc.module.fstream.FileReader">module fstream.FileReader</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileReader.FileReader" id="apidoc.element.fstream.FileReader.FileReader">
+        function <span class="apidocSignatureSpan">fstream.</span>FileReader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FileReader(props) {
+  // console.error(&#x22;    FR create&#x22;, props.path, props.size, new Error().stack)
+  var self = this
+  if (!(self instanceof FileReader)) {
+    throw new Error(&#x27;FileReader must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a File type
+  // XXX Todo: preserve hardlinks by tracking dev+inode+nlink,
+  // with a HardLinkReader class.
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;File&#x27; &#x26;&#x26; props.File))) {
+    throw new Error(&#x27;Non-file type &#x27; + props.type)
+  }
+
+  self._buffer = []
+  self._bytesEmitted = 0
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileReader.super_" id="apidoc.element.fstream.FileReader.super_">
+        function <span class="apidocSignatureSpan">fstream.FileReader.</span>super_
+        <span class="apidocSignatureSpan">(props, currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Reader(props, currentStat) {
+  var self = this
+  if (!(self instanceof Reader)) return new Reader(props, currentStat)
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Reader(dir) to get a DirReader object, etc.
+  // Note that, unlike in the Writer case, ProxyReader is going
+  // to be the *normal* state of affairs, since we rarely know
+  // the type of a file prior to reading it.
+
+  var type
+  var ClassType
+
+  if (props.type &#x26;&#x26; typeof props.type === &#x27;function&#x27;) {
+    type = props.type
+    ClassType = type
+  } else {
+    type = getType(props)
+    ClassType = Reader
+  }
+
+  if (currentStat &#x26;&#x26; !type) {
+    type = getType(currentStat)
+    props[type] = true
+    props.type = type
+  }
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = require(&#x27;./dir-reader.js&#x27;)
+      break
+
+    case &#x27;Link&#x27;:
+    // XXX hard links are just files.
+    // However, it would be good to keep track of files&#x27; dev+inode
+    // and nlink values, and create a HardLinkReader that emits
+    // a linkpath value of the original copy, so that the tar
+    // writer can preserve them.
+    // ClassType = HardLinkReader
+    // break
+
+    case &#x27;File&#x27;:
+      ClassType = require(&#x27;./file-reader.js&#x27;)
+      break
+
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkReader
+      break
+
+    case &#x27;Socket&#x27;:
+      ClassType = require(&#x27;./socket-reader.js&#x27;)
+      break
+
+    case null:
+      ClassType = require(&#x27;./proxy-reader.js&#x27;)
+      break
+  }
+
+  if (!(self instanceof ClassType)) {
+    return new ClassType(props)
+  }
+
+  Abstract.call(self)
+
+  if (!props.path) {
+    self.error(&#x27;Must provide a path&#x27;, null, true)
+  }
+
+  self.readable = true
+  self.writable = false
+
+  self.type = type
+  self.props = props
+  self.depth = props.depth = props.depth || 0
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      // how DOES one create files on the moon?
+      // if the path has spaces in it, then UNC will fail.
+      self._swallowErrors = true
+      // if (self._path.indexOf(&#x22; &#x22;) === -1) {
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    // }
+    }
+  }
+  self.basename = props.basename = path.basename(self.path)
+  self.dirname = props.dirname = path.dirname(self.path)
+
+  // these have served their purpose, and are now just noisy clutter
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+  if (props.sort === &#x27;alpha&#x27;) props.sort = alphasort
+
+  // start the ball rolling.
+  // this will stat the thing, and then call self._read()
+  // to start reading whatever it is.
+  // console.error(&#x22;calling stat&#x22;, props.path, currentStat)
+  self._stat(currentStat)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.FileReader.prototype" id="apidoc.module.fstream.FileReader.prototype">module fstream.FileReader.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileReader.prototype._getStream" id="apidoc.element.fstream.FileReader.prototype._getStream">
+        function <span class="apidocSignatureSpan">fstream.FileReader.prototype.</span>_getStream
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_getStream = function () {
+  var self = this
+  var stream = self._stream = fs.createReadStream(self._path, self.props)
+
+  if (self.props.blksize) {
+    stream.bufferSize = self.props.blksize
+  }
+
+  stream.on(&#x27;open&#x27;, self.emit.bind(self, &#x27;open&#x27;))
+
+  stream.on(&#x27;data&#x27;, function (c) {
+    // console.error(&#x27;\t\t%d %s&#x27;, c.length, self.basename)
+    self._bytesEmitted += c.length
+    // no point saving empty chunks
+    if (!c.length) {
+      return
+    } else if (self._paused || self._buffer.length) {
+      self._buffer.push(c)
+      self._read()
+    } else self.emit(&#x27;data&#x27;, c)
+  })
+
+  stream.on(&#x27;end&#x27;, function () {
+    if (self._paused || self._buffer.length) {
+      // console.error(&#x27;FR Buffering End&#x27;, self._path)
+      self._buffer.push(EOF)
+      self._read()
+    } else {
+      self.emit(&#x27;end&#x27;)
+    }
+
+    if (self._bytesEmitted !== self.props.size) {
+      self.error(&#x22;Didn&#x27;t get expected byte count\n&#x22; +
+        &#x27;expect: &#x27; + self.props.size + &#x27;\n&#x27; +
+        &#x27;actual: &#x27; + self._bytesEmitted)
+    }
+  })
+
+  stream.on(&#x27;close&#x27;, function () {
+    if (self._paused || self._buffer.length) {
+      // console.error(&#x27;FR Buffering Close&#x27;, self._path)
+      self._buffer.push(CLOSE)
+      self._read()
+    } else {
+      // console.error(&#x27;FR close 1&#x27;, self._path)
+      self.emit(&#x27;close&#x27;)
+    }
+  })
+
+  stream.on(&#x27;error&#x27;, function (e) {
+    self.emit(&#x27;error&#x27;, e)
+  })
+
+  self._read()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileReader.prototype._read" id="apidoc.element.fstream.FileReader.prototype._read">
+        function <span class="apidocSignatureSpan">fstream.FileReader.prototype.</span>_read
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_read = function () {
+  var self = this
+  // console.error(&#x27;FR _read&#x27;, self._path)
+  if (self._paused) {
+    // console.error(&#x27;FR _read paused&#x27;, self._path)
+    return
+  }
+
+  if (!self._stream) {
+    // console.error(&#x27;FR _getStream calling&#x27;, self._path)
+    return self._getStream()
+  }
+
+  // clear out the buffer, if there is one.
+  if (self._buffer.length) {
+    // console.error(&#x27;FR _read has buffer&#x27;, self._buffer.length, self._path)
+    var buf = self._buffer
+    for (var i = 0, l = buf.length; i &#x3c; l; i++) {
+      var c = buf[i]
+      if (c === EOF) {
+        // console.error(&#x27;FR Read emitting buffered end&#x27;, self._path)
+        self.emit(&#x27;end&#x27;)
+      } else if (c === CLOSE) {
+        // console.error(&#x27;FR Read emitting buffered close&#x27;, self._path)
+        self.emit(&#x27;close&#x27;)
+      } else {
+        // console.error(&#x27;FR Read emitting buffered data&#x27;, self._path)
+        self.emit(&#x27;data&#x27;, c)
+      }
+
+      if (self._paused) {
+        // console.error(&#x27;FR Read Re-pausing at &#x27;+i, self._path)
+        self._buffer = buf.slice(i)
+        return
+      }
+    }
+    self._buffer.length = 0
+  }
+// console.error(&#x22;FR _read done&#x22;)
+// that&#x27;s about all there is to it.
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileReader.prototype.pause" id="apidoc.element.fstream.FileReader.prototype.pause">
+        function <span class="apidocSignatureSpan">fstream.FileReader.prototype.</span>pause
+        <span class="apidocSignatureSpan">(who)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function (who) {
+  var self = this
+  // console.error(&#x27;FR Pause&#x27;, self._path)
+  if (self._paused) return
+  who = who || self
+  self._paused = true
+  if (self._stream) self._stream.pause()
+  self.emit(&#x27;pause&#x27;, who)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function collect (stream) {
+if (stream._collected) return
+
+if (stream._paused) return stream.on(&#x27;resume&#x27;, collect.bind(null, stream))
+
+stream._collected = true
+stream.<span class="apidocCodeKeywordSpan">pause</span>()
+
+stream.on(&#x27;data&#x27;, save)
+stream.on(&#x27;end&#x27;, save)
+var buf = []
+function save (b) {
+  if (typeof b === &#x27;string&#x27;) b = new Buffer(b)
+  if (Buffer.isBuffer(b) &#x26;&#x26; !b.length) return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileReader.prototype.resume" id="apidoc.element.fstream.FileReader.prototype.resume">
+        function <span class="apidocSignatureSpan">fstream.FileReader.prototype.</span>resume
+        <span class="apidocSignatureSpan">(who)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function (who) {
+  var self = this
+  // console.error(&#x27;FR Resume&#x27;, self._path)
+  if (!self._paused) return
+  who = who || self
+  self.emit(&#x27;resume&#x27;, who)
+  self._paused = false
+  if (self._stream) self._stream.resume()
+  self._read()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        if (dest) stream.pipe(dest)
+
+        buf.forEach(function (b) {
+          if (b) stream.emit(&#x27;data&#x27;, b)
+          else stream.emit(&#x27;end&#x27;)
+        })
+
+        stream.<span class="apidocCodeKeywordSpan">resume</span>()
+      }
+
+      return dest
+    }
+  })(stream.pipe)
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.FileWriter" id="apidoc.module.fstream.FileWriter">module fstream.FileWriter</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileWriter.FileWriter" id="apidoc.element.fstream.FileWriter.FileWriter">
+        function <span class="apidocSignatureSpan">fstream.</span>FileWriter
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FileWriter(props) {
+  var self = this
+  if (!(self instanceof FileWriter)) {
+    throw new Error(&#x27;FileWriter must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a File type
+  if (props.type !== &#x27;File&#x27; || !props.File) {
+    throw new Error(&#x27;Non-file type &#x27; + props.type)
+  }
+
+  self._buffer = []
+  self._bytesWritten = 0
+
+  Writer.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileWriter.super_" id="apidoc.element.fstream.FileWriter.super_">
+        function <span class="apidocSignatureSpan">fstream.FileWriter.</span>super_
+        <span class="apidocSignatureSpan">(props, current)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Writer(props, current) {
+  var self = this
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Writer(dir) to get a DirWriter object, etc.
+  var type = getType(props)
+  var ClassType = Writer
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = DirWriter
+      break
+    case &#x27;File&#x27;:
+      ClassType = FileWriter
+      break
+    case &#x27;Link&#x27;:
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkWriter
+      break
+    case null:
+    default:
+      // Don&#x27;t know yet what type to create, so we wrap in a proxy.
+      ClassType = ProxyWriter
+      break
+  }
+
+  if (!(self instanceof ClassType)) return new ClassType(props)
+
+  // now get down to business.
+
+  Abstract.call(self)
+
+  if (!props.path) self.error(&#x27;Must provide a path&#x27;, null, true)
+
+  // props is what we want to set.
+  // set some convenience properties as well.
+  self.type = props.type
+  self.props = props
+  self.depth = props.depth || 0
+  self.clobber = props.clobber === false ? props.clobber : true
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      self._swallowErrors = true
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    }
+  }
+  self.basename = path.basename(props.path)
+  self.dirname = path.dirname(props.path)
+  self.linkpath = props.linkpath || null
+
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+
+  if (typeof props.mode === &#x27;string&#x27;) {
+    props.mode = parseInt(props.mode, 8)
+  }
+
+  self.readable = false
+  self.writable = true
+
+  // buffer until ready, or while handling another entry
+  self._buffer = []
+  self.ready = false
+
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+
+  // start the ball rolling.
+  // this checks what&#x27;s there already, and then calls
+  // self._create() to call the impl-specific creation stuff.
+  self._stat(current)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.FileWriter.prototype" id="apidoc.module.fstream.FileWriter.prototype">module fstream.FileWriter.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileWriter.prototype._create" id="apidoc.element.fstream.FileWriter.prototype._create">
+        function <span class="apidocSignatureSpan">fstream.FileWriter.prototype.</span>_create
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_create = function () {
+  var self = this
+  if (self._stream) return
+
+  var so = {}
+  if (self.props.flags) so.flags = self.props.flags
+  so.mode = Writer.filemode
+  if (self._old &#x26;&#x26; self._old.blksize) so.bufferSize = self._old.blksize
+
+  self._stream = fs.createWriteStream(self._path, so)
+
+  self._stream.on(&#x27;open&#x27;, function () {
+    // console.error(&#x22;FW open&#x22;, self._buffer, self._path)
+    self.ready = true
+    self._buffer.forEach(function (c) {
+      if (c === EOF) self._stream.end()
+      else self._stream.write(c)
+    })
+    self.emit(&#x27;ready&#x27;)
+    // give this a kick just in case it needs it.
+    self.emit(&#x27;drain&#x27;)
+  })
+
+  self._stream.on(&#x27;error&#x27;, function (er) { self.emit(&#x27;error&#x27;, er) })
+
+  self._stream.on(&#x27;drain&#x27;, function () { self.emit(&#x27;drain&#x27;) })
+
+  self._stream.on(&#x27;close&#x27;, function () {
+    // console.error(&#x27;\n\nFW Stream Close&#x27;, self._path, self.size)
+    self._finish()
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileWriter.prototype._finish" id="apidoc.element.fstream.FileWriter.prototype._finish">
+        function <span class="apidocSignatureSpan">fstream.FileWriter.prototype.</span>_finish
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_finish = function () {
+  var self = this
+  if (typeof self.size === &#x27;number&#x27; &#x26;&#x26; self._bytesWritten !== self.size) {
+    self.error(
+      &#x27;Did not get expected byte count.\n&#x27; +
+      &#x27;expect: &#x27; + self.size + &#x27;\n&#x27; +
+      &#x27;actual: &#x27; + self._bytesWritten)
+  }
+  Writer.prototype._finish.call(self)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileWriter.prototype.end" id="apidoc.element.fstream.FileWriter.prototype.end">
+        function <span class="apidocSignatureSpan">fstream.FileWriter.prototype.</span>end
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function (c) {
+  var self = this
+
+  if (c) self.write(c)
+
+  if (!self.ready) {
+    self._buffer.push(EOF)
+    return false
+  }
+
+  return self._stream.end()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+fstream
+  .Writer({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .write(&#x22;hello\n&#x22;)
+  .<span class="apidocCodeKeywordSpan">end</span>()
+```
+
+This will create the directories if they&#x27;re missing, and then write
+`hello\n` into the file, chmod it to 0755, and assert that 6 bytes have
+been written when it&#x27;s done.
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.FileWriter.prototype.write" id="apidoc.element.fstream.FileWriter.prototype.write">
+        function <span class="apidocSignatureSpan">fstream.FileWriter.prototype.</span>write
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (c) {
+  var self = this
+
+  self._bytesWritten += c.length
+
+  if (!self.ready) {
+    if (!Buffer.isBuffer(c) &#x26;&#x26; typeof c !== &#x27;string&#x27;) {
+      throw new Error(&#x27;invalid write data&#x27;)
+    }
+    self._buffer.push(c)
+    return false
+  }
+
+  var ret = self._stream.write(c)
+  // console.error(&#x27;\t-- fw wrote, _stream says&#x27;, ret, self._stream._queue.length)
+
+  // allow 2 buffered writes, because otherwise there&#x27;s just too
+  // much stop and go bs.
+  if (ret === false &#x26;&#x26; self._stream._queue) {
+    return self._stream._queue.length &#x3c;= 2
+  } else {
+    return ret
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+fstream
+  .Writer({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .<span class="apidocCodeKeywordSpan">write</span>(&#x22;hello\n&#x22;)
+  .end()
+```
+
+This will create the directories if they&#x27;re missing, and then write
+`hello\n` into the file, chmod it to 0755, and assert that 6 bytes have
+been written when it&#x27;s done.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.Link" id="apidoc.module.fstream.Link">module fstream.Link</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Link.Reader" id="apidoc.element.fstream.Link.Reader">
+        function <span class="apidocSignatureSpan">fstream.Link.</span>Reader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LinkReader(props) {
+  var self = this
+  if (!(self instanceof LinkReader)) {
+    throw new Error(&#x27;LinkReader must be called as constructor.&#x27;)
+  }
+
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;SymbolicLink&#x27; &#x26;&#x26; props.SymbolicLink))) {
+    throw new Error(&#x27;Non-link type &#x27; + props.type)
+  }
+
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+So, for example, you can &#x22;write&#x22; a directory, and it&#x27;ll call `mkdir`.  You
+can specify a uid and gid, and it&#x27;ll call `chown`.  You can specify a
+`mtime` and `atime`, and it&#x27;ll call `utimes`.  You can call it a symlink
+and provide a `linkpath` and it&#x27;ll call `symlink`.
+
+Note that it won&#x27;t automatically resolve symbolic links.  So, if you
+call `fstream.<span class="apidocCodeKeywordSpan">Reader</span>(&#x27;/some/symlink&#x27;)` then you&#x27;ll get an object
+that stats and then ends immediately (since it has no data).  To follow
+symbolic links, do this: `fstream.Reader({path:&#x27;/some/symlink&#x27;, follow:
+true })`.
+
+There are various checks to make sure that the bytes emitted are the
+same as the intended size, if the size is set.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Link.Writer" id="apidoc.element.fstream.Link.Writer">
+        function <span class="apidocSignatureSpan">fstream.Link.</span>Writer
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LinkWriter(props) {
+  var self = this
+  if (!(self instanceof LinkWriter)) {
+    throw new Error(&#x27;LinkWriter must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a Link type
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;SymbolicLink&#x27; &#x26;&#x26; props.SymbolicLink))) {
+    throw new Error(&#x27;Non-link type &#x27; + props.type)
+  }
+
+  if (props.linkpath === &#x27;&#x27;) props.linkpath = &#x27;.&#x27;
+  if (!props.linkpath) {
+    self.error(&#x27;Need linkpath property to create &#x27; + props.type)
+  }
+
+  Writer.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+There are various checks to make sure that the bytes emitted are the
+same as the intended size, if the size is set.
+
+## Examples
+
+```javascript
+fstream
+  .<span class="apidocCodeKeywordSpan">Writer</span>({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .write(&#x22;hello\n&#x22;)
+  .end()
+```
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.LinkReader" id="apidoc.module.fstream.LinkReader">module fstream.LinkReader</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.LinkReader.LinkReader" id="apidoc.element.fstream.LinkReader.LinkReader">
+        function <span class="apidocSignatureSpan">fstream.</span>LinkReader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LinkReader(props) {
+  var self = this
+  if (!(self instanceof LinkReader)) {
+    throw new Error(&#x27;LinkReader must be called as constructor.&#x27;)
+  }
+
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;SymbolicLink&#x27; &#x26;&#x26; props.SymbolicLink))) {
+    throw new Error(&#x27;Non-link type &#x27; + props.type)
+  }
+
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.LinkReader.super_" id="apidoc.element.fstream.LinkReader.super_">
+        function <span class="apidocSignatureSpan">fstream.LinkReader.</span>super_
+        <span class="apidocSignatureSpan">(props, currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Reader(props, currentStat) {
+  var self = this
+  if (!(self instanceof Reader)) return new Reader(props, currentStat)
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Reader(dir) to get a DirReader object, etc.
+  // Note that, unlike in the Writer case, ProxyReader is going
+  // to be the *normal* state of affairs, since we rarely know
+  // the type of a file prior to reading it.
+
+  var type
+  var ClassType
+
+  if (props.type &#x26;&#x26; typeof props.type === &#x27;function&#x27;) {
+    type = props.type
+    ClassType = type
+  } else {
+    type = getType(props)
+    ClassType = Reader
+  }
+
+  if (currentStat &#x26;&#x26; !type) {
+    type = getType(currentStat)
+    props[type] = true
+    props.type = type
+  }
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = require(&#x27;./dir-reader.js&#x27;)
+      break
+
+    case &#x27;Link&#x27;:
+    // XXX hard links are just files.
+    // However, it would be good to keep track of files&#x27; dev+inode
+    // and nlink values, and create a HardLinkReader that emits
+    // a linkpath value of the original copy, so that the tar
+    // writer can preserve them.
+    // ClassType = HardLinkReader
+    // break
+
+    case &#x27;File&#x27;:
+      ClassType = require(&#x27;./file-reader.js&#x27;)
+      break
+
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkReader
+      break
+
+    case &#x27;Socket&#x27;:
+      ClassType = require(&#x27;./socket-reader.js&#x27;)
+      break
+
+    case null:
+      ClassType = require(&#x27;./proxy-reader.js&#x27;)
+      break
+  }
+
+  if (!(self instanceof ClassType)) {
+    return new ClassType(props)
+  }
+
+  Abstract.call(self)
+
+  if (!props.path) {
+    self.error(&#x27;Must provide a path&#x27;, null, true)
+  }
+
+  self.readable = true
+  self.writable = false
+
+  self.type = type
+  self.props = props
+  self.depth = props.depth = props.depth || 0
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      // how DOES one create files on the moon?
+      // if the path has spaces in it, then UNC will fail.
+      self._swallowErrors = true
+      // if (self._path.indexOf(&#x22; &#x22;) === -1) {
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    // }
+    }
+  }
+  self.basename = props.basename = path.basename(self.path)
+  self.dirname = props.dirname = path.dirname(self.path)
+
+  // these have served their purpose, and are now just noisy clutter
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+  if (props.sort === &#x27;alpha&#x27;) props.sort = alphasort
+
+  // start the ball rolling.
+  // this will stat the thing, and then call self._read()
+  // to start reading whatever it is.
+  // console.error(&#x22;calling stat&#x22;, props.path, currentStat)
+  self._stat(currentStat)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.LinkReader.prototype" id="apidoc.module.fstream.LinkReader.prototype">module fstream.LinkReader.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.LinkReader.prototype._read" id="apidoc.element.fstream.LinkReader.prototype._read">
+        function <span class="apidocSignatureSpan">fstream.LinkReader.prototype.</span>_read
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_read = function () {
+  var self = this
+  if (self._paused) return
+  // basically just a no-op, since we got all the info we need
+  // from the _stat method
+  if (!self._ended) {
+    self.emit(&#x27;end&#x27;)
+    self.emit(&#x27;close&#x27;)
+    self._ended = true
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.LinkReader.prototype._stat" id="apidoc.element.fstream.LinkReader.prototype._stat">
+        function <span class="apidocSignatureSpan">fstream.LinkReader.prototype.</span>_stat
+        <span class="apidocSignatureSpan">(currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_stat = function (currentStat) {
+  var self = this
+  fs.readlink(self._path, function (er, linkpath) {
+    if (er) return self.error(er)
+    self.linkpath = self.props.linkpath = linkpath
+    self.emit(&#x27;linkpath&#x27;, linkpath)
+    Reader.prototype._stat.call(self, currentStat)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.LinkWriter" id="apidoc.module.fstream.LinkWriter">module fstream.LinkWriter</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.LinkWriter.LinkWriter" id="apidoc.element.fstream.LinkWriter.LinkWriter">
+        function <span class="apidocSignatureSpan">fstream.</span>LinkWriter
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LinkWriter(props) {
+  var self = this
+  if (!(self instanceof LinkWriter)) {
+    throw new Error(&#x27;LinkWriter must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a Link type
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;SymbolicLink&#x27; &#x26;&#x26; props.SymbolicLink))) {
+    throw new Error(&#x27;Non-link type &#x27; + props.type)
+  }
+
+  if (props.linkpath === &#x27;&#x27;) props.linkpath = &#x27;.&#x27;
+  if (!props.linkpath) {
+    self.error(&#x27;Need linkpath property to create &#x27; + props.type)
+  }
+
+  Writer.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.LinkWriter.super_" id="apidoc.element.fstream.LinkWriter.super_">
+        function <span class="apidocSignatureSpan">fstream.LinkWriter.</span>super_
+        <span class="apidocSignatureSpan">(props, current)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Writer(props, current) {
+  var self = this
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Writer(dir) to get a DirWriter object, etc.
+  var type = getType(props)
+  var ClassType = Writer
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = DirWriter
+      break
+    case &#x27;File&#x27;:
+      ClassType = FileWriter
+      break
+    case &#x27;Link&#x27;:
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkWriter
+      break
+    case null:
+    default:
+      // Don&#x27;t know yet what type to create, so we wrap in a proxy.
+      ClassType = ProxyWriter
+      break
+  }
+
+  if (!(self instanceof ClassType)) return new ClassType(props)
+
+  // now get down to business.
+
+  Abstract.call(self)
+
+  if (!props.path) self.error(&#x27;Must provide a path&#x27;, null, true)
+
+  // props is what we want to set.
+  // set some convenience properties as well.
+  self.type = props.type
+  self.props = props
+  self.depth = props.depth || 0
+  self.clobber = props.clobber === false ? props.clobber : true
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      self._swallowErrors = true
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    }
+  }
+  self.basename = path.basename(props.path)
+  self.dirname = path.dirname(props.path)
+  self.linkpath = props.linkpath || null
+
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+
+  if (typeof props.mode === &#x27;string&#x27;) {
+    props.mode = parseInt(props.mode, 8)
+  }
+
+  self.readable = false
+  self.writable = true
+
+  // buffer until ready, or while handling another entry
+  self._buffer = []
+  self.ready = false
+
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+
+  // start the ball rolling.
+  // this checks what&#x27;s there already, and then calls
+  // self._create() to call the impl-specific creation stuff.
+  self._stat(current)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.LinkWriter.prototype" id="apidoc.module.fstream.LinkWriter.prototype">module fstream.LinkWriter.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.LinkWriter.prototype._create" id="apidoc.element.fstream.LinkWriter.prototype._create">
+        function <span class="apidocSignatureSpan">fstream.LinkWriter.prototype.</span>_create
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_create = function () {
+  // console.error(&#x22; LW _create&#x22;)
+  var self = this
+  var hard = self.type === &#x27;Link&#x27; || process.platform === &#x27;win32&#x27;
+  var link = hard ? &#x27;link&#x27; : &#x27;symlink&#x27;
+  var lp = hard ? path.resolve(self.dirname, self.linkpath) : self.linkpath
+
+  // can only change the link path by clobbering
+  // For hard links, let&#x27;s just assume that&#x27;s always the case, since
+  // there&#x27;s no good way to read them if we don&#x27;t already know.
+  if (hard) return clobber(self, lp, link)
+
+  fs.readlink(self._path, function (er, p) {
+    // only skip creation if it&#x27;s exactly the same link
+    if (p &#x26;&#x26; p === lp) return finish(self)
+    clobber(self, lp, link)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.LinkWriter.prototype.end" id="apidoc.element.fstream.LinkWriter.prototype.end">
+        function <span class="apidocSignatureSpan">fstream.LinkWriter.prototype.</span>end
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function () {
+  // console.error(&#x22;LW finish in end&#x22;)
+  this._ended = true
+  if (this.ready) {
+    this._finished = true
+    this._finish()
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+fstream
+  .Writer({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .write(&#x22;hello\n&#x22;)
+  .<span class="apidocCodeKeywordSpan">end</span>()
+```
+
+This will create the directories if they&#x27;re missing, and then write
+`hello\n` into the file, chmod it to 0755, and assert that 6 bytes have
+been written when it&#x27;s done.
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.Proxy" id="apidoc.module.fstream.Proxy">module fstream.Proxy</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Proxy.Reader" id="apidoc.element.fstream.Proxy.Reader">
+        function <span class="apidocSignatureSpan">fstream.Proxy.</span>Reader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ProxyReader(props) {
+  var self = this
+  if (!(self instanceof ProxyReader)) {
+    throw new Error(&#x27;ProxyReader must be called as constructor.&#x27;)
+  }
+
+  self.props = props
+  self._buffer = []
+  self.ready = false
+
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+So, for example, you can &#x22;write&#x22; a directory, and it&#x27;ll call `mkdir`.  You
+can specify a uid and gid, and it&#x27;ll call `chown`.  You can specify a
+`mtime` and `atime`, and it&#x27;ll call `utimes`.  You can call it a symlink
+and provide a `linkpath` and it&#x27;ll call `symlink`.
+
+Note that it won&#x27;t automatically resolve symbolic links.  So, if you
+call `fstream.<span class="apidocCodeKeywordSpan">Reader</span>(&#x27;/some/symlink&#x27;)` then you&#x27;ll get an object
+that stats and then ends immediately (since it has no data).  To follow
+symbolic links, do this: `fstream.Reader({path:&#x27;/some/symlink&#x27;, follow:
+true })`.
+
+There are various checks to make sure that the bytes emitted are the
+same as the intended size, if the size is set.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Proxy.Writer" id="apidoc.element.fstream.Proxy.Writer">
+        function <span class="apidocSignatureSpan">fstream.Proxy.</span>Writer
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ProxyWriter(props) {
+  var self = this
+  if (!(self instanceof ProxyWriter)) {
+    throw new Error(&#x27;ProxyWriter must be called as constructor.&#x27;)
+  }
+
+  self.props = props
+  self._needDrain = false
+
+  Writer.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+There are various checks to make sure that the bytes emitted are the
+same as the intended size, if the size is set.
+
+## Examples
+
+```javascript
+fstream
+  .<span class="apidocCodeKeywordSpan">Writer</span>({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .write(&#x22;hello\n&#x22;)
+  .end()
+```
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.ProxyReader" id="apidoc.module.fstream.ProxyReader">module fstream.ProxyReader</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyReader.ProxyReader" id="apidoc.element.fstream.ProxyReader.ProxyReader">
+        function <span class="apidocSignatureSpan">fstream.</span>ProxyReader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ProxyReader(props) {
+  var self = this
+  if (!(self instanceof ProxyReader)) {
+    throw new Error(&#x27;ProxyReader must be called as constructor.&#x27;)
+  }
+
+  self.props = props
+  self._buffer = []
+  self.ready = false
+
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyReader.super_" id="apidoc.element.fstream.ProxyReader.super_">
+        function <span class="apidocSignatureSpan">fstream.ProxyReader.</span>super_
+        <span class="apidocSignatureSpan">(props, currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Reader(props, currentStat) {
+  var self = this
+  if (!(self instanceof Reader)) return new Reader(props, currentStat)
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Reader(dir) to get a DirReader object, etc.
+  // Note that, unlike in the Writer case, ProxyReader is going
+  // to be the *normal* state of affairs, since we rarely know
+  // the type of a file prior to reading it.
+
+  var type
+  var ClassType
+
+  if (props.type &#x26;&#x26; typeof props.type === &#x27;function&#x27;) {
+    type = props.type
+    ClassType = type
+  } else {
+    type = getType(props)
+    ClassType = Reader
+  }
+
+  if (currentStat &#x26;&#x26; !type) {
+    type = getType(currentStat)
+    props[type] = true
+    props.type = type
+  }
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = require(&#x27;./dir-reader.js&#x27;)
+      break
+
+    case &#x27;Link&#x27;:
+    // XXX hard links are just files.
+    // However, it would be good to keep track of files&#x27; dev+inode
+    // and nlink values, and create a HardLinkReader that emits
+    // a linkpath value of the original copy, so that the tar
+    // writer can preserve them.
+    // ClassType = HardLinkReader
+    // break
+
+    case &#x27;File&#x27;:
+      ClassType = require(&#x27;./file-reader.js&#x27;)
+      break
+
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkReader
+      break
+
+    case &#x27;Socket&#x27;:
+      ClassType = require(&#x27;./socket-reader.js&#x27;)
+      break
+
+    case null:
+      ClassType = require(&#x27;./proxy-reader.js&#x27;)
+      break
+  }
+
+  if (!(self instanceof ClassType)) {
+    return new ClassType(props)
+  }
+
+  Abstract.call(self)
+
+  if (!props.path) {
+    self.error(&#x27;Must provide a path&#x27;, null, true)
+  }
+
+  self.readable = true
+  self.writable = false
+
+  self.type = type
+  self.props = props
+  self.depth = props.depth = props.depth || 0
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      // how DOES one create files on the moon?
+      // if the path has spaces in it, then UNC will fail.
+      self._swallowErrors = true
+      // if (self._path.indexOf(&#x22; &#x22;) === -1) {
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    // }
+    }
+  }
+  self.basename = props.basename = path.basename(self.path)
+  self.dirname = props.dirname = path.dirname(self.path)
+
+  // these have served their purpose, and are now just noisy clutter
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+  if (props.sort === &#x27;alpha&#x27;) props.sort = alphasort
+
+  // start the ball rolling.
+  // this will stat the thing, and then call self._read()
+  // to start reading whatever it is.
+  // console.error(&#x22;calling stat&#x22;, props.path, currentStat)
+  self._stat(currentStat)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.ProxyReader.prototype" id="apidoc.module.fstream.ProxyReader.prototype">module fstream.ProxyReader.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyReader.prototype._addProxy" id="apidoc.element.fstream.ProxyReader.prototype._addProxy">
+        function <span class="apidocSignatureSpan">fstream.ProxyReader.prototype.</span>_addProxy
+        <span class="apidocSignatureSpan">(proxy)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_addProxy = function (proxy) {
+  var self = this
+  if (self._proxyTarget) {
+    return self.error(&#x27;proxy already set&#x27;)
+  }
+
+  self._proxyTarget = proxy
+  proxy._proxy = self
+
+  ;[
+    &#x27;error&#x27;,
+    &#x27;data&#x27;,
+    &#x27;end&#x27;,
+    &#x27;close&#x27;,
+    &#x27;linkpath&#x27;,
+    &#x27;entry&#x27;,
+    &#x27;entryEnd&#x27;,
+    &#x27;child&#x27;,
+    &#x27;childEnd&#x27;,
+    &#x27;warn&#x27;,
+    &#x27;stat&#x27;
+  ].forEach(function (ev) {
+    // console.error(&#x27;~~ proxy event&#x27;, ev, self.path)
+    proxy.on(ev, self.emit.bind(self, ev))
+  })
+
+  self.emit(&#x27;proxy&#x27;, proxy)
+
+  proxy.on(&#x27;ready&#x27;, function () {
+    // console.error(&#x22;~~ proxy is ready!&#x22;, self.path)
+    self.ready = true
+    self.emit(&#x27;ready&#x27;)
+  })
+
+  var calls = self._buffer
+  self._buffer.length = 0
+  calls.forEach(function (c) {
+    proxy[c[0]].apply(proxy, c[1])
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyReader.prototype._stat" id="apidoc.element.fstream.ProxyReader.prototype._stat">
+        function <span class="apidocSignatureSpan">fstream.ProxyReader.prototype.</span>_stat
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_stat = function () {
+  var self = this
+  var props = self.props
+  // stat the thing to see what the proxy should be.
+  var stat = props.follow ? &#x27;stat&#x27; : &#x27;lstat&#x27;
+
+  fs[stat](props.path, function (er, current) {
+    var type
+    if (er || !current) {
+      type = &#x27;File&#x27;
+    } else {
+      type = getType(current)
+    }
+
+    props[type] = true
+    props.type = self.type = type
+
+    self._old = current
+    self._addProxy(Reader(props, current))
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyReader.prototype.pause" id="apidoc.element.fstream.ProxyReader.prototype.pause">
+        function <span class="apidocSignatureSpan">fstream.ProxyReader.prototype.</span>pause
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function () {
+  return this._proxyTarget ? this._proxyTarget.pause() : false
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function collect (stream) {
+if (stream._collected) return
+
+if (stream._paused) return stream.on(&#x27;resume&#x27;, collect.bind(null, stream))
+
+stream._collected = true
+stream.<span class="apidocCodeKeywordSpan">pause</span>()
+
+stream.on(&#x27;data&#x27;, save)
+stream.on(&#x27;end&#x27;, save)
+var buf = []
+function save (b) {
+  if (typeof b === &#x27;string&#x27;) b = new Buffer(b)
+  if (Buffer.isBuffer(b) &#x26;&#x26; !b.length) return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyReader.prototype.resume" id="apidoc.element.fstream.ProxyReader.prototype.resume">
+        function <span class="apidocSignatureSpan">fstream.ProxyReader.prototype.</span>resume
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function () {
+  return this._proxyTarget ? this._proxyTarget.resume() : false
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        if (dest) stream.pipe(dest)
+
+        buf.forEach(function (b) {
+          if (b) stream.emit(&#x27;data&#x27;, b)
+          else stream.emit(&#x27;end&#x27;)
+        })
+
+        stream.<span class="apidocCodeKeywordSpan">resume</span>()
+      }
+
+      return dest
+    }
+  })(stream.pipe)
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.ProxyWriter" id="apidoc.module.fstream.ProxyWriter">module fstream.ProxyWriter</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyWriter.ProxyWriter" id="apidoc.element.fstream.ProxyWriter.ProxyWriter">
+        function <span class="apidocSignatureSpan">fstream.</span>ProxyWriter
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ProxyWriter(props) {
+  var self = this
+  if (!(self instanceof ProxyWriter)) {
+    throw new Error(&#x27;ProxyWriter must be called as constructor.&#x27;)
+  }
+
+  self.props = props
+  self._needDrain = false
+
+  Writer.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyWriter.super_" id="apidoc.element.fstream.ProxyWriter.super_">
+        function <span class="apidocSignatureSpan">fstream.ProxyWriter.</span>super_
+        <span class="apidocSignatureSpan">(props, current)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Writer(props, current) {
+  var self = this
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Writer(dir) to get a DirWriter object, etc.
+  var type = getType(props)
+  var ClassType = Writer
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = DirWriter
+      break
+    case &#x27;File&#x27;:
+      ClassType = FileWriter
+      break
+    case &#x27;Link&#x27;:
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkWriter
+      break
+    case null:
+    default:
+      // Don&#x27;t know yet what type to create, so we wrap in a proxy.
+      ClassType = ProxyWriter
+      break
+  }
+
+  if (!(self instanceof ClassType)) return new ClassType(props)
+
+  // now get down to business.
+
+  Abstract.call(self)
+
+  if (!props.path) self.error(&#x27;Must provide a path&#x27;, null, true)
+
+  // props is what we want to set.
+  // set some convenience properties as well.
+  self.type = props.type
+  self.props = props
+  self.depth = props.depth || 0
+  self.clobber = props.clobber === false ? props.clobber : true
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      self._swallowErrors = true
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    }
+  }
+  self.basename = path.basename(props.path)
+  self.dirname = path.dirname(props.path)
+  self.linkpath = props.linkpath || null
+
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+
+  if (typeof props.mode === &#x27;string&#x27;) {
+    props.mode = parseInt(props.mode, 8)
+  }
+
+  self.readable = false
+  self.writable = true
+
+  // buffer until ready, or while handling another entry
+  self._buffer = []
+  self.ready = false
+
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+
+  // start the ball rolling.
+  // this checks what&#x27;s there already, and then calls
+  // self._create() to call the impl-specific creation stuff.
+  self._stat(current)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.ProxyWriter.prototype" id="apidoc.module.fstream.ProxyWriter.prototype">module fstream.ProxyWriter.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyWriter.prototype._addProxy" id="apidoc.element.fstream.ProxyWriter.prototype._addProxy">
+        function <span class="apidocSignatureSpan">fstream.ProxyWriter.prototype.</span>_addProxy
+        <span class="apidocSignatureSpan">(proxy)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_addProxy = function (proxy) {
+  // console.error(&#x22;~~ set proxy&#x22;, this.path)
+  var self = this
+  if (self._proxy) {
+    return self.error(&#x27;proxy already set&#x27;)
+  }
+
+  self._proxy = proxy
+  ;[
+    &#x27;ready&#x27;,
+    &#x27;error&#x27;,
+    &#x27;close&#x27;,
+    &#x27;pipe&#x27;,
+    &#x27;drain&#x27;,
+    &#x27;warn&#x27;
+  ].forEach(function (ev) {
+    proxy.on(ev, self.emit.bind(self, ev))
+  })
+
+  self.emit(&#x27;proxy&#x27;, proxy)
+
+  var calls = self._buffer
+  calls.forEach(function (c) {
+    // console.error(&#x22;~~ ~~ proxy buffered call&#x22;, c[0], c[1])
+    proxy[c[0]].apply(proxy, c[1])
+  })
+  self._buffer.length = 0
+  if (self._needsDrain) self.emit(&#x27;drain&#x27;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyWriter.prototype._stat" id="apidoc.element.fstream.ProxyWriter.prototype._stat">
+        function <span class="apidocSignatureSpan">fstream.ProxyWriter.prototype.</span>_stat
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_stat = function () {
+  var self = this
+  var props = self.props
+  // stat the thing to see what the proxy should be.
+  var stat = props.follow ? &#x27;stat&#x27; : &#x27;lstat&#x27;
+
+  fs[stat](props.path, function (er, current) {
+    var type
+    if (er || !current) {
+      type = &#x27;File&#x27;
+    } else {
+      type = getType(current)
+    }
+
+    props[type] = true
+    props.type = self.type = type
+
+    self._old = current
+    self._addProxy(Writer(props, current))
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyWriter.prototype.add" id="apidoc.element.fstream.ProxyWriter.prototype.add">
+        function <span class="apidocSignatureSpan">fstream.ProxyWriter.prototype.</span>add
+        <span class="apidocSignatureSpan">(entry)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function (entry) {
+  // console.error(&#x22;~~ proxy add&#x22;)
+  collect(entry)
+
+  if (!this._proxy) {
+    this._buffer.push([&#x27;add&#x27;, [entry]])
+    this._needDrain = true
+    return false
+  }
+  return this._proxy.add(entry)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Once they&#x27;re all done, then we can resume completely.
+var e = 0
+;(function unblockEntry () {
+  var entry = entryBuffer[e++]
+  // console.error(&#x22; ==== unblock entry&#x22;, entry &#x26;&#x26; entry.path)
+  if (!entry) return resume()
+  entry.on(&#x27;end&#x27;, unblockEntry)
+  if (dest) dest.<span class="apidocCodeKeywordSpan">add</span>(entry)
+  else stream.emit(&#x27;entry&#x27;, entry)
+})()
+
+function resume () {
+  stream.removeListener(&#x27;entry&#x27;, saveEntry)
+  stream.removeListener(&#x27;data&#x27;, save)
+  stream.removeListener(&#x27;end&#x27;, save)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyWriter.prototype.end" id="apidoc.element.fstream.ProxyWriter.prototype.end">
+        function <span class="apidocSignatureSpan">fstream.ProxyWriter.prototype.</span>end
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function (c) {
+  // console.error(&#x27;~~ proxy end&#x27;)
+  if (!this._proxy) {
+    this._buffer.push([&#x27;end&#x27;, [c]])
+    return false
+  }
+  return this._proxy.end(c)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+fstream
+  .Writer({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .write(&#x22;hello\n&#x22;)
+  .<span class="apidocCodeKeywordSpan">end</span>()
+```
+
+This will create the directories if they&#x27;re missing, and then write
+`hello\n` into the file, chmod it to 0755, and assert that 6 bytes have
+been written when it&#x27;s done.
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.ProxyWriter.prototype.write" id="apidoc.element.fstream.ProxyWriter.prototype.write">
+        function <span class="apidocSignatureSpan">fstream.ProxyWriter.prototype.</span>write
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (c) {
+  // console.error(&#x27;~~ proxy write&#x27;)
+  if (!this._proxy) {
+    this._buffer.push([&#x27;write&#x27;, [c]])
+    this._needDrain = true
+    return false
+  }
+  return this._proxy.write(c)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+fstream
+  .Writer({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .<span class="apidocCodeKeywordSpan">write</span>(&#x22;hello\n&#x22;)
+  .end()
+```
+
+This will create the directories if they&#x27;re missing, and then write
+`hello\n` into the file, chmod it to 0755, and assert that 6 bytes have
+been written when it&#x27;s done.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.Reader" id="apidoc.module.fstream.Reader">module fstream.Reader</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Reader.Reader" id="apidoc.element.fstream.Reader.Reader">
+        function <span class="apidocSignatureSpan">fstream.</span>Reader
+        <span class="apidocSignatureSpan">(props, currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Reader(props, currentStat) {
+  var self = this
+  if (!(self instanceof Reader)) return new Reader(props, currentStat)
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Reader(dir) to get a DirReader object, etc.
+  // Note that, unlike in the Writer case, ProxyReader is going
+  // to be the *normal* state of affairs, since we rarely know
+  // the type of a file prior to reading it.
+
+  var type
+  var ClassType
+
+  if (props.type &#x26;&#x26; typeof props.type === &#x27;function&#x27;) {
+    type = props.type
+    ClassType = type
+  } else {
+    type = getType(props)
+    ClassType = Reader
+  }
+
+  if (currentStat &#x26;&#x26; !type) {
+    type = getType(currentStat)
+    props[type] = true
+    props.type = type
+  }
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = require(&#x27;./dir-reader.js&#x27;)
+      break
+
+    case &#x27;Link&#x27;:
+    // XXX hard links are just files.
+    // However, it would be good to keep track of files&#x27; dev+inode
+    // and nlink values, and create a HardLinkReader that emits
+    // a linkpath value of the original copy, so that the tar
+    // writer can preserve them.
+    // ClassType = HardLinkReader
+    // break
+
+    case &#x27;File&#x27;:
+      ClassType = require(&#x27;./file-reader.js&#x27;)
+      break
+
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkReader
+      break
+
+    case &#x27;Socket&#x27;:
+      ClassType = require(&#x27;./socket-reader.js&#x27;)
+      break
+
+    case null:
+      ClassType = require(&#x27;./proxy-reader.js&#x27;)
+      break
+  }
+
+  if (!(self instanceof ClassType)) {
+    return new ClassType(props)
+  }
+
+  Abstract.call(self)
+
+  if (!props.path) {
+    self.error(&#x27;Must provide a path&#x27;, null, true)
+  }
+
+  self.readable = true
+  self.writable = false
+
+  self.type = type
+  self.props = props
+  self.depth = props.depth = props.depth || 0
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      // how DOES one create files on the moon?
+      // if the path has spaces in it, then UNC will fail.
+      self._swallowErrors = true
+      // if (self._path.indexOf(&#x22; &#x22;) === -1) {
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    // }
+    }
+  }
+  self.basename = props.basename = path.basename(self.path)
+  self.dirname = props.dirname = path.dirname(self.path)
+
+  // these have served their purpose, and are now just noisy clutter
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+  if (props.sort === &#x27;alpha&#x27;) props.sort = alphasort
+
+  // start the ball rolling.
+  // this will stat the thing, and then call self._read()
+  // to start reading whatever it is.
+  // console.error(&#x22;calling stat&#x22;, props.path, currentStat)
+  self._stat(currentStat)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+So, for example, you can &#x22;write&#x22; a directory, and it&#x27;ll call `mkdir`.  You
+can specify a uid and gid, and it&#x27;ll call `chown`.  You can specify a
+`mtime` and `atime`, and it&#x27;ll call `utimes`.  You can call it a symlink
+and provide a `linkpath` and it&#x27;ll call `symlink`.
+
+Note that it won&#x27;t automatically resolve symbolic links.  So, if you
+call `fstream.<span class="apidocCodeKeywordSpan">Reader</span>(&#x27;/some/symlink&#x27;)` then you&#x27;ll get an object
+that stats and then ends immediately (since it has no data).  To follow
+symbolic links, do this: `fstream.Reader({path:&#x27;/some/symlink&#x27;, follow:
+true })`.
+
+There are various checks to make sure that the bytes emitted are the
+same as the intended size, if the size is set.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Reader.Dir" id="apidoc.element.fstream.Reader.Dir">
+        function <span class="apidocSignatureSpan">fstream.Reader.</span>Dir
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DirReader(props) {
+  var self = this
+  if (!(self instanceof DirReader)) {
+    throw new Error(&#x27;DirReader must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a Directory type
+  if (props.type !== &#x27;Directory&#x27; || !props.Directory) {
+    throw new Error(&#x27;Non-directory type &#x27; + props.type)
+  }
+
+  self.entries = null
+  self._index = -1
+  self._paused = false
+  self._length = -1
+
+  if (props.sort) {
+    this.sort = props.sort
+  }
+
+  Reader.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Reader.File" id="apidoc.element.fstream.Reader.File">
+        function <span class="apidocSignatureSpan">fstream.Reader.</span>File
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FileReader(props) {
+  // console.error(&#x22;    FR create&#x22;, props.path, props.size, new Error().stack)
+  var self = this
+  if (!(self instanceof FileReader)) {
+    throw new Error(&#x27;FileReader must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a File type
+  // XXX Todo: preserve hardlinks by tracking dev+inode+nlink,
+  // with a HardLinkReader class.
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;File&#x27; &#x26;&#x26; props.File))) {
+    throw new Error(&#x27;Non-file type &#x27; + props.type)
+  }
+
+  self._buffer = []
+  self._bytesEmitted = 0
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Reader.Link" id="apidoc.element.fstream.Reader.Link">
+        function <span class="apidocSignatureSpan">fstream.Reader.</span>Link
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LinkReader(props) {
+  var self = this
+  if (!(self instanceof LinkReader)) {
+    throw new Error(&#x27;LinkReader must be called as constructor.&#x27;)
+  }
+
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;SymbolicLink&#x27; &#x26;&#x26; props.SymbolicLink))) {
+    throw new Error(&#x27;Non-link type &#x27; + props.type)
+  }
+
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Reader.Proxy" id="apidoc.element.fstream.Reader.Proxy">
+        function <span class="apidocSignatureSpan">fstream.Reader.</span>Proxy
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ProxyReader(props) {
+  var self = this
+  if (!(self instanceof ProxyReader)) {
+    throw new Error(&#x27;ProxyReader must be called as constructor.&#x27;)
+  }
+
+  self.props = props
+  self._buffer = []
+  self.ready = false
+
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Reader.super_" id="apidoc.element.fstream.Reader.super_">
+        function <span class="apidocSignatureSpan">fstream.Reader.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Abstract() {
+  Stream.call(this)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.Reader.prototype" id="apidoc.module.fstream.Reader.prototype">module fstream.Reader.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Reader.prototype._read" id="apidoc.element.fstream.Reader.prototype._read">
+        function <span class="apidocSignatureSpan">fstream.Reader.prototype.</span>_read
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_read = function () {
+  this.error(&#x27;Cannot read unknown type: &#x27; + this.type)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Reader.prototype._stat" id="apidoc.element.fstream.Reader.prototype._stat">
+        function <span class="apidocSignatureSpan">fstream.Reader.prototype.</span>_stat
+        <span class="apidocSignatureSpan">(currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_stat = function (currentStat) {
+  var self = this
+  var props = self.props
+  var stat = props.follow ? &#x27;stat&#x27; : &#x27;lstat&#x27;
+  // console.error(&#x22;Reader._stat&#x22;, self._path, currentStat)
+  if (currentStat) process.nextTick(statCb.bind(null, null, currentStat))
+  else fs[stat](self._path, statCb)
+
+  function statCb (er, props_) {
+    // console.error(&#x22;Reader._stat, statCb&#x22;, self._path, props_, props_.nlink)
+    if (er) return self.error(er)
+
+    Object.keys(props_).forEach(function (k) {
+      props[k] = props_[k]
+    })
+
+    // if it&#x27;s not the expected size, then abort here.
+    if (undefined !== self.size &#x26;&#x26; props.size !== self.size) {
+      return self.error(&#x27;incorrect size&#x27;)
+    }
+    self.size = props.size
+
+    var type = getType(props)
+    var handleHardlinks = props.hardlinks !== false
+
+    // special little thing for handling hardlinks.
+    if (handleHardlinks &#x26;&#x26; type !== &#x27;Directory&#x27; &#x26;&#x26; props.nlink &#x26;&#x26; props.nlink &#x3e; 1) {
+      var k = props.dev + &#x27;:&#x27; + props.ino
+      // console.error(&#x22;Reader has nlink&#x22;, self._path, k)
+      if (hardLinks[k] === self._path || !hardLinks[k]) {
+        hardLinks[k] = self._path
+      } else {
+        // switch into hardlink mode.
+        type = self.type = self.props.type = &#x27;Link&#x27;
+        self.Link = self.props.Link = true
+        self.linkpath = self.props.linkpath = hardLinks[k]
+        // console.error(&#x22;Hardlink detected, switching mode&#x22;, self._path, self.linkpath)
+        // Setting __proto__ would arguably be the &#x22;correct&#x22;
+        // approach here, but that just seems too wrong.
+        self._stat = self._read = LinkReader.prototype._read
+      }
+    }
+
+    if (self.type &#x26;&#x26; self.type !== type) {
+      self.error(&#x27;Unexpected type: &#x27; + type)
+    }
+
+    // if the filter doesn&#x27;t pass, then just skip over this one.
+    // still have to emit end so that dir-walking can move on.
+    if (self.filter) {
+      var who = self._proxy || self
+      // special handling for ProxyReaders
+      if (!self.filter.call(who, who, props)) {
+        if (!self._disowned) {
+          self.abort()
+          self.emit(&#x27;end&#x27;)
+          self.emit(&#x27;close&#x27;)
+        }
+        return
+      }
+    }
+
+    // last chance to abort or disown before the flow starts!
+    var events = [&#x27;_stat&#x27;, &#x27;stat&#x27;, &#x27;ready&#x27;]
+    var e = 0
+    ;(function go () {
+      if (self._aborted) {
+        self.emit(&#x27;end&#x27;)
+        self.emit(&#x27;close&#x27;)
+        return
+      }
+
+      if (self._paused &#x26;&#x26; self.type !== &#x27;Directory&#x27;) {
+        self.once(&#x27;resume&#x27;, go)
+        return
+      }
+
+      var ev = events[e++]
+      if (!ev) {
+        return self._read()
+      }
+      self.emit(ev, props)
+      go()
+    })()
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Reader.prototype.pause" id="apidoc.element.fstream.Reader.prototype.pause">
+        function <span class="apidocSignatureSpan">fstream.Reader.prototype.</span>pause
+        <span class="apidocSignatureSpan">(who)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function (who) {
+  this._paused = true
+  who = who || this
+  this.emit(&#x27;pause&#x27;, who)
+  if (this._stream) this._stream.pause(who)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function collect (stream) {
+if (stream._collected) return
+
+if (stream._paused) return stream.on(&#x27;resume&#x27;, collect.bind(null, stream))
+
+stream._collected = true
+stream.<span class="apidocCodeKeywordSpan">pause</span>()
+
+stream.on(&#x27;data&#x27;, save)
+stream.on(&#x27;end&#x27;, save)
+var buf = []
+function save (b) {
+  if (typeof b === &#x27;string&#x27;) b = new Buffer(b)
+  if (Buffer.isBuffer(b) &#x26;&#x26; !b.length) return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Reader.prototype.pipe" id="apidoc.element.fstream.Reader.prototype.pipe">
+        function <span class="apidocSignatureSpan">fstream.Reader.prototype.</span>pipe
+        <span class="apidocSignatureSpan">(dest)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pipe = function (dest) {
+  var self = this
+  if (typeof dest.add === &#x27;function&#x27;) {
+    // piping to a multi-compatible, and we&#x27;ve got directory entries.
+    self.on(&#x27;entry&#x27;, function (entry) {
+      var ret = dest.add(entry)
+      if (ret === false) {
+        self.pause()
+      }
+    })
+  }
+
+  // console.error(&#x22;R Pipe apply Stream Pipe&#x22;)
+  return Stream.prototype.pipe.apply(this, arguments)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Note that the linkpath is relative to the symbolic link location, not
+the parent dir or cwd.
+
+```javascript
+fstream
+  .Reader(&#x22;path/to/dir&#x22;)
+  .<span class="apidocCodeKeywordSpan">pipe</span>(fstream.Writer(&#x22;path/to/other/dir&#x22;))
+```
+
+This will do like `cp -Rp path/to/dir path/to/other/dir`.  If the other
+dir exists and isn&#x27;t a directory, then it&#x27;ll emit an error.  It&#x27;ll also
+set the uid, gid, mode, etc. to be identical.  In this way, it&#x27;s more
+like `rsync -a` than simply a copy.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Reader.prototype.resume" id="apidoc.element.fstream.Reader.prototype.resume">
+        function <span class="apidocSignatureSpan">fstream.Reader.prototype.</span>resume
+        <span class="apidocSignatureSpan">(who)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function (who) {
+  this._paused = false
+  who = who || this
+  this.emit(&#x27;resume&#x27;, who)
+  if (this._stream) this._stream.resume(who)
+  this._read()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        if (dest) stream.pipe(dest)
+
+        buf.forEach(function (b) {
+          if (b) stream.emit(&#x27;data&#x27;, b)
+          else stream.emit(&#x27;end&#x27;)
+        })
+
+        stream.<span class="apidocCodeKeywordSpan">resume</span>()
+      }
+
+      return dest
+    }
+  })(stream.pipe)
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.Writer" id="apidoc.module.fstream.Writer">module fstream.Writer</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer.Writer" id="apidoc.element.fstream.Writer.Writer">
+        function <span class="apidocSignatureSpan">fstream.</span>Writer
+        <span class="apidocSignatureSpan">(props, current)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Writer(props, current) {
+  var self = this
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Writer(dir) to get a DirWriter object, etc.
+  var type = getType(props)
+  var ClassType = Writer
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = DirWriter
+      break
+    case &#x27;File&#x27;:
+      ClassType = FileWriter
+      break
+    case &#x27;Link&#x27;:
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkWriter
+      break
+    case null:
+    default:
+      // Don&#x27;t know yet what type to create, so we wrap in a proxy.
+      ClassType = ProxyWriter
+      break
+  }
+
+  if (!(self instanceof ClassType)) return new ClassType(props)
+
+  // now get down to business.
+
+  Abstract.call(self)
+
+  if (!props.path) self.error(&#x27;Must provide a path&#x27;, null, true)
+
+  // props is what we want to set.
+  // set some convenience properties as well.
+  self.type = props.type
+  self.props = props
+  self.depth = props.depth || 0
+  self.clobber = props.clobber === false ? props.clobber : true
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      self._swallowErrors = true
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    }
+  }
+  self.basename = path.basename(props.path)
+  self.dirname = path.dirname(props.path)
+  self.linkpath = props.linkpath || null
+
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+
+  if (typeof props.mode === &#x27;string&#x27;) {
+    props.mode = parseInt(props.mode, 8)
+  }
+
+  self.readable = false
+  self.writable = true
+
+  // buffer until ready, or while handling another entry
+  self._buffer = []
+  self.ready = false
+
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+
+  // start the ball rolling.
+  // this checks what&#x27;s there already, and then calls
+  // self._create() to call the impl-specific creation stuff.
+  self._stat(current)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+There are various checks to make sure that the bytes emitted are the
+same as the intended size, if the size is set.
+
+## Examples
+
+```javascript
+fstream
+  .<span class="apidocCodeKeywordSpan">Writer</span>({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .write(&#x22;hello\n&#x22;)
+  .end()
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer.Dir" id="apidoc.element.fstream.Writer.Dir">
+        function <span class="apidocSignatureSpan">fstream.Writer.</span>Dir
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DirWriter(props) {
+  var self = this
+  if (!(self instanceof DirWriter)) {
+    self.error(&#x27;DirWriter must be called as constructor.&#x27;, null, true)
+  }
+
+  // should already be established as a Directory type
+  if (props.type !== &#x27;Directory&#x27; || !props.Directory) {
+    self.error(&#x27;Non-directory type &#x27; + props.type + &#x27; &#x27; +
+      JSON.stringify(props), null, true)
+  }
+
+  Writer.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer.File" id="apidoc.element.fstream.Writer.File">
+        function <span class="apidocSignatureSpan">fstream.Writer.</span>File
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FileWriter(props) {
+  var self = this
+  if (!(self instanceof FileWriter)) {
+    throw new Error(&#x27;FileWriter must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a File type
+  if (props.type !== &#x27;File&#x27; || !props.File) {
+    throw new Error(&#x27;Non-file type &#x27; + props.type)
+  }
+
+  self._buffer = []
+  self._bytesWritten = 0
+
+  Writer.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer.Link" id="apidoc.element.fstream.Writer.Link">
+        function <span class="apidocSignatureSpan">fstream.Writer.</span>Link
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LinkWriter(props) {
+  var self = this
+  if (!(self instanceof LinkWriter)) {
+    throw new Error(&#x27;LinkWriter must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a Link type
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;SymbolicLink&#x27; &#x26;&#x26; props.SymbolicLink))) {
+    throw new Error(&#x27;Non-link type &#x27; + props.type)
+  }
+
+  if (props.linkpath === &#x27;&#x27;) props.linkpath = &#x27;.&#x27;
+  if (!props.linkpath) {
+    self.error(&#x27;Need linkpath property to create &#x27; + props.type)
+  }
+
+  Writer.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer.Proxy" id="apidoc.element.fstream.Writer.Proxy">
+        function <span class="apidocSignatureSpan">fstream.Writer.</span>Proxy
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ProxyWriter(props) {
+  var self = this
+  if (!(self instanceof ProxyWriter)) {
+    throw new Error(&#x27;ProxyWriter must be called as constructor.&#x27;)
+  }
+
+  self.props = props
+  self._needDrain = false
+
+  Writer.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer.super_" id="apidoc.element.fstream.Writer.super_">
+        function <span class="apidocSignatureSpan">fstream.Writer.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Abstract() {
+  Stream.call(this)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.Writer.prototype" id="apidoc.module.fstream.Writer.prototype">module fstream.Writer.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer.prototype._create" id="apidoc.element.fstream.Writer.prototype._create">
+        function <span class="apidocSignatureSpan">fstream.Writer.prototype.</span>_create
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_create = function () {
+  var self = this
+  fs[self.props.follow ? &#x27;stat&#x27; : &#x27;lstat&#x27;](self._path, function (er) {
+    if (er) {
+      return self.warn(&#x27;Cannot create &#x27; + self._path + &#x27;\n&#x27; +
+        &#x27;Unsupported type: &#x27; + self.type, &#x27;ENOTSUP&#x27;)
+    }
+    self._finish()
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer.prototype._finish" id="apidoc.element.fstream.Writer.prototype._finish">
+        function <span class="apidocSignatureSpan">fstream.Writer.prototype.</span>_finish
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_finish = function () {
+  var self = this
+
+  if (self._finishing) return
+  self._finishing = true
+
+  // console.error(&#x22; W Finish&#x22;, self._path, self.size)
+
+  // set up all the things.
+  // At this point, we&#x27;re already done writing whatever we&#x27;ve gotta write,
+  // adding files to the dir, etc.
+  var todo = 0
+  var errState = null
+  var done = false
+
+  if (self._old) {
+    // the times will almost *certainly* have changed.
+    // adds the utimes syscall, but remove another stat.
+    self._old.atime = new Date(0)
+    self._old.mtime = new Date(0)
+    // console.error(&#x22; W Finish Stale Stat&#x22;, self._path, self.size)
+    setProps(self._old)
+  } else {
+    var stat = self.props.follow ? &#x27;stat&#x27; : &#x27;lstat&#x27;
+    // console.error(&#x22; W Finish Stating&#x22;, self._path, self.size)
+    fs[stat](self._path, function (er, current) {
+      // console.error(&#x22; W Finish Stated&#x22;, self._path, self.size, current)
+      if (er) {
+        // if we&#x27;re in the process of writing out a
+        // directory, it&#x27;s very possible that the thing we&#x27;re linking to
+        // doesn&#x27;t exist yet (especially if it was intended as a symlink),
+        // so swallow ENOENT errors here and just soldier on.
+        if (er.code === &#x27;ENOENT&#x27; &#x26;&#x26;
+          (self.type === &#x27;Link&#x27; || self.type === &#x27;SymbolicLink&#x27;) &#x26;&#x26;
+          process.platform === &#x27;win32&#x27;) {
+          self.ready = true
+          self.emit(&#x27;ready&#x27;)
+          self.emit(&#x27;end&#x27;)
+          self.emit(&#x27;close&#x27;)
+          self.end = self._finish = function () {}
+          return
+        } else return self.error(er)
+      }
+      setProps(self._old = current)
+    })
+  }
+
+  return
+
+  function setProps (current) {
+    todo += 3
+    endChmod(self, self.props, current, self._path, next(&#x27;chmod&#x27;))
+    endChown(self, self.props, current, self._path, next(&#x27;chown&#x27;))
+    endUtimes(self, self.props, current, self._path, next(&#x27;utimes&#x27;))
+  }
+
+  function next (what) {
+    return function (er) {
+      // console.error(&#x22;   W Finish&#x22;, what, todo)
+      if (errState) return
+      if (er) {
+        er.fstream_finish_call = what
+        return self.error(errState = er)
+      }
+      if (--todo &#x3e; 0) return
+      if (done) return
+      done = true
+
+      // we may still need to set the mode/etc. on some parent dirs
+      // that were created previously.  delay end/close until then.
+      if (!self._madeDir) return end()
+      else endMadeDir(self, self._path, end)
+
+      function end (er) {
+        if (er) {
+          er.fstream_finish_call = &#x27;setupMadeDir&#x27;
+          return self.error(er)
+        }
+        // all the props have been set, so we&#x27;re completely done.
+        self.emit(&#x27;end&#x27;)
+        self.emit(&#x27;close&#x27;)
+      }
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer.prototype._stat" id="apidoc.element.fstream.Writer.prototype._stat">
+        function <span class="apidocSignatureSpan">fstream.Writer.prototype.</span>_stat
+        <span class="apidocSignatureSpan">(current)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_stat = function (current) {
+  var self = this
+  var props = self.props
+  var stat = props.follow ? &#x27;stat&#x27; : &#x27;lstat&#x27;
+  var who = self._proxy || self
+
+  if (current) statCb(null, current)
+  else fs[stat](self._path, statCb)
+
+  function statCb (er, current) {
+    if (self.filter &#x26;&#x26; !self.filter.call(who, who, current)) {
+      self._aborted = true
+      self.emit(&#x27;end&#x27;)
+      self.emit(&#x27;close&#x27;)
+      return
+    }
+
+    // if it&#x27;s not there, great.  We&#x27;ll just create it.
+    // if it is there, then we&#x27;ll need to change whatever differs
+    if (er || !current) {
+      return create(self)
+    }
+
+    self._old = current
+    var currentType = getType(current)
+
+    // if it&#x27;s a type change, then we need to clobber or error.
+    // if it&#x27;s not a type change, then let the impl take care of it.
+    if (currentType !== self.type) {
+      return rimraf(self._path, function (er) {
+        if (er) return self.error(er)
+        self._old = null
+        create(self)
+      })
+    }
+
+    // otherwise, just handle in the app-specific way
+    // this creates a fs.WriteStream, or mkdir&#x27;s, or whatever
+    create(self)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer.prototype.add" id="apidoc.element.fstream.Writer.prototype.add">
+        function <span class="apidocSignatureSpan">fstream.Writer.prototype.</span>add
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function () {
+  this.error(&#x22;Can&#x27;t add to non-Directory type&#x22;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Once they&#x27;re all done, then we can resume completely.
+var e = 0
+;(function unblockEntry () {
+  var entry = entryBuffer[e++]
+  // console.error(&#x22; ==== unblock entry&#x22;, entry &#x26;&#x26; entry.path)
+  if (!entry) return resume()
+  entry.on(&#x27;end&#x27;, unblockEntry)
+  if (dest) dest.<span class="apidocCodeKeywordSpan">add</span>(entry)
+  else stream.emit(&#x27;entry&#x27;, entry)
+})()
+
+function resume () {
+  stream.removeListener(&#x27;entry&#x27;, saveEntry)
+  stream.removeListener(&#x27;data&#x27;, save)
+  stream.removeListener(&#x27;end&#x27;, save)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer.prototype.pipe" id="apidoc.element.fstream.Writer.prototype.pipe">
+        function <span class="apidocSignatureSpan">fstream.Writer.prototype.</span>pipe
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pipe = function () {
+  this.error(&#x22;Can&#x27;t pipe from writable stream&#x22;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Note that the linkpath is relative to the symbolic link location, not
+the parent dir or cwd.
+
+```javascript
+fstream
+  .Reader(&#x22;path/to/dir&#x22;)
+  .<span class="apidocCodeKeywordSpan">pipe</span>(fstream.Writer(&#x22;path/to/other/dir&#x22;))
+```
+
+This will do like `cp -Rp path/to/dir path/to/other/dir`.  If the other
+dir exists and isn&#x27;t a directory, then it&#x27;ll emit an error.  It&#x27;ll also
+set the uid, gid, mode, etc. to be identical.  In this way, it&#x27;s more
+like `rsync -a` than simply a copy.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.Writer.prototype.write" id="apidoc.element.fstream.Writer.prototype.write">
+        function <span class="apidocSignatureSpan">fstream.Writer.prototype.</span>write
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function () {
+  return true
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+fstream
+  .Writer({ path: &#x22;path/to/file&#x22;
+          , mode: 0755
+          , size: 6
+          })
+  .<span class="apidocCodeKeywordSpan">write</span>(&#x22;hello\n&#x22;)
+  .end()
+```
+
+This will create the directories if they&#x27;re missing, and then write
+`hello\n` into the file, chmod it to 0755, and assert that 6 bytes have
+been written when it&#x27;s done.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.socket_reader" id="apidoc.module.fstream.socket_reader">module fstream.socket_reader</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.socket_reader.socket_reader" id="apidoc.element.fstream.socket_reader.socket_reader">
+        function <span class="apidocSignatureSpan">fstream.</span>socket_reader
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SocketReader(props) {
+  var self = this
+  if (!(self instanceof SocketReader)) {
+    throw new Error(&#x27;SocketReader must be called as constructor.&#x27;)
+  }
+
+  if (!(props.type === &#x27;Socket&#x27; &#x26;&#x26; props.Socket)) {
+    throw new Error(&#x27;Non-socket type &#x27; + props.type)
+  }
+
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.socket_reader.super_" id="apidoc.element.fstream.socket_reader.super_">
+        function <span class="apidocSignatureSpan">fstream.socket_reader.</span>super_
+        <span class="apidocSignatureSpan">(props, currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Reader(props, currentStat) {
+  var self = this
+  if (!(self instanceof Reader)) return new Reader(props, currentStat)
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Reader(dir) to get a DirReader object, etc.
+  // Note that, unlike in the Writer case, ProxyReader is going
+  // to be the *normal* state of affairs, since we rarely know
+  // the type of a file prior to reading it.
+
+  var type
+  var ClassType
+
+  if (props.type &#x26;&#x26; typeof props.type === &#x27;function&#x27;) {
+    type = props.type
+    ClassType = type
+  } else {
+    type = getType(props)
+    ClassType = Reader
+  }
+
+  if (currentStat &#x26;&#x26; !type) {
+    type = getType(currentStat)
+    props[type] = true
+    props.type = type
+  }
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = require(&#x27;./dir-reader.js&#x27;)
+      break
+
+    case &#x27;Link&#x27;:
+    // XXX hard links are just files.
+    // However, it would be good to keep track of files&#x27; dev+inode
+    // and nlink values, and create a HardLinkReader that emits
+    // a linkpath value of the original copy, so that the tar
+    // writer can preserve them.
+    // ClassType = HardLinkReader
+    // break
+
+    case &#x27;File&#x27;:
+      ClassType = require(&#x27;./file-reader.js&#x27;)
+      break
+
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkReader
+      break
+
+    case &#x27;Socket&#x27;:
+      ClassType = require(&#x27;./socket-reader.js&#x27;)
+      break
+
+    case null:
+      ClassType = require(&#x27;./proxy-reader.js&#x27;)
+      break
+  }
+
+  if (!(self instanceof ClassType)) {
+    return new ClassType(props)
+  }
+
+  Abstract.call(self)
+
+  if (!props.path) {
+    self.error(&#x27;Must provide a path&#x27;, null, true)
+  }
+
+  self.readable = true
+  self.writable = false
+
+  self.type = type
+  self.props = props
+  self.depth = props.depth = props.depth || 0
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      // how DOES one create files on the moon?
+      // if the path has spaces in it, then UNC will fail.
+      self._swallowErrors = true
+      // if (self._path.indexOf(&#x22; &#x22;) === -1) {
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    // }
+    }
+  }
+  self.basename = props.basename = path.basename(self.path)
+  self.dirname = props.dirname = path.dirname(self.path)
+
+  // these have served their purpose, and are now just noisy clutter
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+  if (props.sort === &#x27;alpha&#x27;) props.sort = alphasort
+
+  // start the ball rolling.
+  // this will stat the thing, and then call self._read()
+  // to start reading whatever it is.
+  // console.error(&#x22;calling stat&#x22;, props.path, currentStat)
+  self._stat(currentStat)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fstream.socket_reader.prototype" id="apidoc.module.fstream.socket_reader.prototype">module fstream.socket_reader.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fstream.socket_reader.prototype._read" id="apidoc.element.fstream.socket_reader.prototype._read">
+        function <span class="apidocSignatureSpan">fstream.socket_reader.prototype.</span>_read
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_read = function () {
+  var self = this
+  if (self._paused) return
+  // basically just a no-op, since we got all the info we have
+  // from the _stat method
+  if (!self._ended) {
+    self.emit(&#x27;end&#x27;)
+    self.emit(&#x27;close&#x27;)
+    self._ended = true
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
