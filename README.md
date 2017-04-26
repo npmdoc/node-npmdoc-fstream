@@ -1,6 +1,6 @@
 # npmdoc-fstream
 
-#### api documentation for  [fstream (v1.0.11)](https://github.com/npm/fstream#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-fstream.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-fstream) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-fstream.svg)](https://travis-ci.org/npmdoc/node-npmdoc-fstream)
+#### basic api documentation for  [fstream (v1.0.11)](https://github.com/npm/fstream#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-fstream.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-fstream) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-fstream.svg)](https://travis-ci.org/npmdoc/node-npmdoc-fstream)
 
 #### Advanced file system stream things
 
@@ -74,7 +74,8 @@
     "scripts": {
         "test": "standard && tap examples/*.js"
     },
-    "version": "1.0.11"
+    "version": "1.0.11",
+    "bin": {}
 }
 ```
 
