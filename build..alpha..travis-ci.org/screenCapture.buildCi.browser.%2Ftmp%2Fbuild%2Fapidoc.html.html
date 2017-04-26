@@ -1894,7 +1894,22 @@ fstream
   this._aborted = true
   this.emit('abort')
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// if the filter doesn't pass, then just skip over this one.
+// still have to emit end so that dir-walking can move on.
+if (self.filter) {
+  var who = self._proxy || self
+  // special handling for ProxyReaders
+  if (!self.filter.call(who, who, props)) {
+    if (!self._disowned) {
+      self.<span class="apidocCodeKeywordSpan">abort</span>()
+      self.emit('end')
+      self.emit('close')
+    }
+    return
+  }
+}
+...</pre></li>
     </ul>
 
 
@@ -1925,21 +1940,21 @@ fstream
   else this.emit('error', er)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  }
+}
+})
 
-  // replace the pipe method with a new version that will
-  // unlock the buffered stuff.  if you just call .pipe()
-  // without a destination, then it'll re-play the events.
-  stream.pipe = (function (orig) {
-    return function (dest) {
-// console.<span class="apidocCodeKeywordSpan">error</span>(' === open the pipes', dest &amp;&amp; dest.path)
+var indent = ''
 
-// let the entries flow through one at a time.
-// Once they're all done, then we can resume completely.
-var e = 0
-;(function unblockEntry () {
-  var entry = entryBuffer[e++]
-  // console.error(" ==== unblock entry", entry &amp;&amp; entry.path)
+r.on('entry', appears)
+r.on('ready', function () {
+console.<span class="apidocCodeKeywordSpan">error</span>('ready to begin!', r.path)
+})
+
+function appears (entry) {
+console.error(indent + 'a %s appears!', entry.type, entry.basename, typeof entry.basename)
+if (foggy) {
+  console.error('FOGGY!')
+  var p = entry
 ...</pre></li>
     </ul>
 
@@ -1976,21 +1991,21 @@ var e = 0
   return this
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
+filter: function () {
+  return this.type === 'Directory'
+}
+})
 
+var indent = ''
 
-module.exports = collect
+r.<span class="apidocCodeKeywordSpan">on</span>('entry', appears)
+r.on('ready', function () {
+console.error('ready to begin!', r.path)
+})
 
-function collect (stream) {
-if (stream._collected) return
-
-if (stream._paused) return stream.<span class="apidocCodeKeywordSpan">on</span>('resume', collect.bind(null, stream))
-
-stream._collected = true
-stream.pause()
-
-stream.on('data', save)
-stream.on('end', save)
-var buf = []
+function appears (entry) {
+console.error(indent + 'a %s appears!', entry.type, entry.basename, typeof entry.basename)
+if (foggy) {
 ...</pre></li>
     </ul>
 
@@ -2028,7 +2043,22 @@ var buf = []
     self.emit('warn', er)
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+}
+
+// XXX Remove this.  Works in node as of 0.6.2 or so.
+// Long filenames should not break stuff.
+entry.on('error', function (er) {
+  if (entry._swallowErrors) {
+    self.<span class="apidocCodeKeywordSpan">warn</span>(er)
+    entry.emit('end')
+    entry.emit('close')
+  } else {
+    self.emit('error', er)
+  }
+})
+...</pre></li>
     </ul>
 
 
@@ -2327,7 +2357,23 @@ fstream
     }
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+})
+}
+
+// start walking the dir, and emit an "entry" event for each one.
+DirReader.prototype._read = function () {
+var self = this
+
+if (!self.entries) return self.<span class="apidocCodeKeywordSpan">_getEntries</span>()
+
+if (self._paused || self._currentEntry || self._aborted) {
+  // console.error('DR paused=%j, current=%j, aborted=%j', self._paused, !!self._currentEntry, self._aborted)
+  return
+}
+
+self._index++
+...</pre></li>
     </ul>
 
 
@@ -2470,7 +2516,23 @@ fstream
     })
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  else processEntries()
+
+  function processEntries () {
+    self._length = self.entries.length
+    if (typeof self.sort === 'function') {
+      self.entries = self.entries.sort(self.sort.bind(self))
+    }
+    self.<span class="apidocCodeKeywordSpan">_read</span>()
+  }
+})
+}
+
+// start walking the dir, and emit an "entry" event for each one.
+DirReader.prototype._read = function () {
+var self = this
+...</pre></li>
     </ul>
 
 
@@ -2507,7 +2569,23 @@ fstream
   this.emit('entry', entry)
   this.emit('child', entry)
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // skip over sockets.  they can't be piped around properly,
+  // so there's really no sense even acknowledging them.
+  // if someone really wants to see them, they can listen to
+  // the "socket" events.
+  if (entry.type === 'Socket') {
+    self.emit('socket', entry)
+  } else {
+    self.<span class="apidocCodeKeywordSpan">emitEntry</span>(entry)
+  }
+})
+
+var ended = false
+entry.on('close', onend)
+entry.on('disown', onend)
+function onend () {
+...</pre></li>
     </ul>
 
 
@@ -2553,21 +2631,20 @@ fstream
   self.emit('pause', who)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-
-function collect (stream) {
-if (stream._collected) return
-
-if (stream._paused) return stream.on('resume', collect.bind(null, stream))
-
-stream._collected = true
-stream.<span class="apidocCodeKeywordSpan">pause</span>()
-
-stream.on('data', save)
-stream.on('end', save)
-var buf = []
-function save (b) {
-  if (typeof b === 'string') b = new Buffer(b)
-  if (Buffer.isBuffer(b) &amp;&amp; !b.length) return
+  return function (c) {
+    // throw in some pathological pause()/resume() behavior
+    // just for extra fun.
+    process.nextTick(function () {
+      if (!foggy &amp;&amp; !ended) { // &amp;&amp; Math.random() &lt; 0.3) {
+        console.error(indent + '%s casts a spell', entry.basename)
+        console.error('\na slowing fog comes over the battlefield...\n\u001b[32m')
+        entry.<span class="apidocCodeKeywordSpan">pause</span>()
+        entry.once('resume', liftFog)
+        foggy = setTimeout(liftFog, 1000)
+      }
+    })
+  }
+}
 ...</pre></li>
     </ul>
 
@@ -2598,20 +2675,21 @@ function save (b) {
   } else self._read()
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-        if (dest) stream.pipe(dest)
-
-        buf.forEach(function (b) {
-          if (b) stream.emit('data', b)
-          else stream.emit('end')
-        })
-
-        stream.<span class="apidocCodeKeywordSpan">resume</span>()
-      }
-
-      return dest
-    }
-  })(stream.pipe)
+    console.error('%s breaks the spell!', who &amp;&amp; who.path)
+  } else {
+    console.error('the spell expires!')
+  }
+  console.error('\u001b[mthe fog lifts!\n')
+  clearTimeout(foggy)
+  foggy = null
+  if (entry._paused) entry.<span class="apidocCodeKeywordSpan">resume</span>()
 }
+
+if (entry.type === 'Directory') {
+  var ended = false
+  entry.once('end', function () { ended = true })
+  return function (c) {
+    // throw in some pathological pause()/resume() behavior
 ...</pre></li>
     </ul>
 
@@ -2764,7 +2842,23 @@ function save (b) {
     self._process()
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+self._buffer = []
+self.ready = false
+
+self.filter = typeof props.filter === 'function' ? props.filter : null
+
+// start the ball rolling.
+// this checks what's there already, and then calls
+// self.<span class="apidocCodeKeywordSpan">_create</span>() to call the impl-specific creation stuff.
+self._stat(current)
+}
+
+// Calling this means that it's something we can't create.
+// Just assert that it's already there, otherwise raise a warning.
+Writer.prototype._create = function () {
+var self = this
+...</pre></li>
     </ul>
 
 
@@ -2874,7 +2968,23 @@ function save (b) {
     self._process()
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+DirWriter.prototype._create = function () {
+  var self = this
+  mkdir(self._path, Writer.dirmode, function (er) {
+    if (er) return self.error(er)
+    // ready to start getting entries!
+    self.ready = true
+    self.emit('ready')
+    self.<span class="apidocCodeKeywordSpan">_process</span>()
+  })
+}
+
+// a DirWriter has an add(entry) method, but its .write() doesn't
+// do anything.  Why a no-op rather than a throw?  Because this
+// leaves open the door for writing directory metadata for
+// gnu/solaris style dumpdirs.
+...</pre></li>
     </ul>
 
 
@@ -3308,7 +3418,23 @@ fstream
 
   self._read()
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (self._paused) {
+  // console.error('FR _read paused', self._path)
+  return
+}
+
+if (!self._stream) {
+  // console.error('FR _getStream calling', self._path)
+  return self.<span class="apidocCodeKeywordSpan">_getStream</span>()
+}
+
+// clear out the buffer, if there is one.
+if (self._buffer.length) {
+  // console.error('FR _read has buffer', self._buffer.length, self._path)
+  var buf = self._buffer
+  for (var i = 0, l = buf.length; i &lt; l; i++) {
+...</pre></li>
     </ul>
 
 
@@ -3361,7 +3487,23 @@ fstream
 // console.error("FR _read done")
 // that's about all there is to it.
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  else processEntries()
+
+  function processEntries () {
+    self._length = self.entries.length
+    if (typeof self.sort === 'function') {
+      self.entries = self.entries.sort(self.sort.bind(self))
+    }
+    self.<span class="apidocCodeKeywordSpan">_read</span>()
+  }
+})
+}
+
+// start walking the dir, and emit an "entry" event for each one.
+DirReader.prototype._read = function () {
+var self = this
+...</pre></li>
     </ul>
 
 
@@ -3383,21 +3525,20 @@ fstream
   self.emit('pause', who)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-
-function collect (stream) {
-if (stream._collected) return
-
-if (stream._paused) return stream.on('resume', collect.bind(null, stream))
-
-stream._collected = true
-stream.<span class="apidocCodeKeywordSpan">pause</span>()
-
-stream.on('data', save)
-stream.on('end', save)
-var buf = []
-function save (b) {
-  if (typeof b === 'string') b = new Buffer(b)
-  if (Buffer.isBuffer(b) &amp;&amp; !b.length) return
+  return function (c) {
+    // throw in some pathological pause()/resume() behavior
+    // just for extra fun.
+    process.nextTick(function () {
+      if (!foggy &amp;&amp; !ended) { // &amp;&amp; Math.random() &lt; 0.3) {
+        console.error(indent + '%s casts a spell', entry.basename)
+        console.error('\na slowing fog comes over the battlefield...\n\u001b[32m')
+        entry.<span class="apidocCodeKeywordSpan">pause</span>()
+        entry.once('resume', liftFog)
+        foggy = setTimeout(liftFog, 1000)
+      }
+    })
+  }
+}
 ...</pre></li>
     </ul>
 
@@ -3421,20 +3562,21 @@ function save (b) {
   self._read()
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-        if (dest) stream.pipe(dest)
-
-        buf.forEach(function (b) {
-          if (b) stream.emit('data', b)
-          else stream.emit('end')
-        })
-
-        stream.<span class="apidocCodeKeywordSpan">resume</span>()
-      }
-
-      return dest
-    }
-  })(stream.pipe)
+    console.error('%s breaks the spell!', who &amp;&amp; who.path)
+  } else {
+    console.error('the spell expires!')
+  }
+  console.error('\u001b[mthe fog lifts!\n')
+  clearTimeout(foggy)
+  foggy = null
+  if (entry._paused) entry.<span class="apidocCodeKeywordSpan">resume</span>()
 }
+
+if (entry.type === 'Directory') {
+  var ended = false
+  entry.once('end', function () { ended = true })
+  return function (c) {
+    // throw in some pathological pause()/resume() behavior
 ...</pre></li>
     </ul>
 
@@ -3611,7 +3753,23 @@ function save (b) {
     self._finish()
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+self._buffer = []
+self.ready = false
+
+self.filter = typeof props.filter === 'function' ? props.filter : null
+
+// start the ball rolling.
+// this checks what's there already, and then calls
+// self.<span class="apidocCodeKeywordSpan">_create</span>() to call the impl-specific creation stuff.
+self._stat(current)
+}
+
+// Calling this means that it's something we can't create.
+// Just assert that it's already there, otherwise raise a warning.
+Writer.prototype._create = function () {
+var self = this
+...</pre></li>
     </ul>
 
 
@@ -3633,7 +3791,23 @@ function save (b) {
   }
   Writer.prototype._finish.call(self)
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+if (self._processing) return
+
+var entry = self._buffer.shift()
+if (!entry) {
+  // console.error("DW Drain")
+  self.emit('drain')
+  if (self._ended) self.<span class="apidocCodeKeywordSpan">_finish</span>()
+  return
+}
+
+self._processing = true
+// console.error("DW Entry", entry._path)
+
+self.emit('entry', entry)
+...</pre></li>
     </ul>
 
 
@@ -3995,7 +4169,23 @@ fstream
     self._ended = true
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  else processEntries()
+
+  function processEntries () {
+    self._length = self.entries.length
+    if (typeof self.sort === 'function') {
+      self.entries = self.entries.sort(self.sort.bind(self))
+    }
+    self.<span class="apidocCodeKeywordSpan">_read</span>()
+  }
+})
+}
+
+// start walking the dir, and emit an "entry" event for each one.
+DirReader.prototype._read = function () {
+var self = this
+...</pre></li>
     </ul>
 
 
@@ -4016,7 +4206,23 @@ fstream
     Reader.prototype._stat.call(self, currentStat)
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+self.filter = typeof props.filter === 'function' ? props.filter : null
+if (props.sort === 'alpha') props.sort = alphasort
+
+// start the ball rolling.
+// this will stat the thing, and then call self._read()
+// to start reading whatever it is.
+// console.error("calling stat", props.path, currentStat)
+self.<span class="apidocCodeKeywordSpan">_stat</span>(currentStat)
+}
+
+function alphasort (a, b) {
+return a === b ? 0
+  : a.toLowerCase() &gt; b.toLowerCase() ? 1
+    : a.toLowerCase() &lt; b.toLowerCase() ? -1
+      : a &gt; b ? 1
+...</pre></li>
     </ul>
 
 
@@ -4181,7 +4387,23 @@ fstream
     clobber(self, lp, link)
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+self._buffer = []
+self.ready = false
+
+self.filter = typeof props.filter === 'function' ? props.filter : null
+
+// start the ball rolling.
+// this checks what's there already, and then calls
+// self.<span class="apidocCodeKeywordSpan">_create</span>() to call the impl-specific creation stuff.
+self._stat(current)
+}
+
+// Calling this means that it's something we can't create.
+// Just assert that it's already there, otherwise raise a warning.
+Writer.prototype._create = function () {
+var self = this
+...</pre></li>
     </ul>
 
 
@@ -4507,7 +4729,23 @@ fstream
     proxy[c[0]].apply(proxy, c[1])
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    type = getType(current)
+  }
+
+  props[type] = true
+  props.type = self.type = type
+
+  self._old = current
+  self.<span class="apidocCodeKeywordSpan">_addProxy</span>(Reader(props, current))
+})
+}
+
+ProxyReader.prototype._addProxy = function (proxy) {
+var self = this
+if (self._proxyTarget) {
+  return self.error('proxy already set')
+...</pre></li>
     </ul>
 
 
@@ -4540,7 +4778,23 @@ fstream
     self._addProxy(Reader(props, current))
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+self.filter = typeof props.filter === 'function' ? props.filter : null
+if (props.sort === 'alpha') props.sort = alphasort
+
+// start the ball rolling.
+// this will stat the thing, and then call self._read()
+// to start reading whatever it is.
+// console.error("calling stat", props.path, currentStat)
+self.<span class="apidocCodeKeywordSpan">_stat</span>(currentStat)
+}
+
+function alphasort (a, b) {
+return a === b ? 0
+  : a.toLowerCase() &gt; b.toLowerCase() ? 1
+    : a.toLowerCase() &lt; b.toLowerCase() ? -1
+      : a &gt; b ? 1
+...</pre></li>
     </ul>
 
 
@@ -4556,21 +4810,20 @@ fstream
   return this._proxyTarget ? this._proxyTarget.pause() : false
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-
-function collect (stream) {
-if (stream._collected) return
-
-if (stream._paused) return stream.on('resume', collect.bind(null, stream))
-
-stream._collected = true
-stream.<span class="apidocCodeKeywordSpan">pause</span>()
-
-stream.on('data', save)
-stream.on('end', save)
-var buf = []
-function save (b) {
-  if (typeof b === 'string') b = new Buffer(b)
-  if (Buffer.isBuffer(b) &amp;&amp; !b.length) return
+  return function (c) {
+    // throw in some pathological pause()/resume() behavior
+    // just for extra fun.
+    process.nextTick(function () {
+      if (!foggy &amp;&amp; !ended) { // &amp;&amp; Math.random() &lt; 0.3) {
+        console.error(indent + '%s casts a spell', entry.basename)
+        console.error('\na slowing fog comes over the battlefield...\n\u001b[32m')
+        entry.<span class="apidocCodeKeywordSpan">pause</span>()
+        entry.once('resume', liftFog)
+        foggy = setTimeout(liftFog, 1000)
+      }
+    })
+  }
+}
 ...</pre></li>
     </ul>
 
@@ -4587,20 +4840,21 @@ function save (b) {
   return this._proxyTarget ? this._proxyTarget.resume() : false
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-        if (dest) stream.pipe(dest)
-
-        buf.forEach(function (b) {
-          if (b) stream.emit('data', b)
-          else stream.emit('end')
-        })
-
-        stream.<span class="apidocCodeKeywordSpan">resume</span>()
-      }
-
-      return dest
-    }
-  })(stream.pipe)
+    console.error('%s breaks the spell!', who &amp;&amp; who.path)
+  } else {
+    console.error('the spell expires!')
+  }
+  console.error('\u001b[mthe fog lifts!\n')
+  clearTimeout(foggy)
+  foggy = null
+  if (entry._paused) entry.<span class="apidocCodeKeywordSpan">resume</span>()
 }
+
+if (entry.type === 'Directory') {
+  var ended = false
+  entry.once('end', function () { ended = true })
+  return function (c) {
+    // throw in some pathological pause()/resume() behavior
 ...</pre></li>
     </ul>
 
@@ -4769,7 +5023,23 @@ function save (b) {
   self._buffer.length = 0
   if (self._needsDrain) self.emit('drain')
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    type = getType(current)
+  }
+
+  props[type] = true
+  props.type = self.type = type
+
+  self._old = current
+  self.<span class="apidocCodeKeywordSpan">_addProxy</span>(Reader(props, current))
+})
+}
+
+ProxyReader.prototype._addProxy = function (proxy) {
+var self = this
+if (self._proxyTarget) {
+  return self.error('proxy already set')
+...</pre></li>
     </ul>
 
 
@@ -4802,7 +5072,23 @@ function save (b) {
     self._addProxy(Writer(props, current))
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+self.filter = typeof props.filter === 'function' ? props.filter : null
+if (props.sort === 'alpha') props.sort = alphasort
+
+// start the ball rolling.
+// this will stat the thing, and then call self._read()
+// to start reading whatever it is.
+// console.error("calling stat", props.path, currentStat)
+self.<span class="apidocCodeKeywordSpan">_stat</span>(currentStat)
+}
+
+function alphasort (a, b) {
+return a === b ? 0
+  : a.toLowerCase() &gt; b.toLowerCase() ? 1
+    : a.toLowerCase() &lt; b.toLowerCase() ? -1
+      : a &gt; b ? 1
+...</pre></li>
     </ul>
 
 
@@ -5206,7 +5492,23 @@ same as the intended size, if the size is set.
     <li>description and source-code<pre class="apidocCodePre">_read = function () {
   this.error('Cannot read unknown type: ' + this.type)
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  else processEntries()
+
+  function processEntries () {
+    self._length = self.entries.length
+    if (typeof self.sort === 'function') {
+      self.entries = self.entries.sort(self.sort.bind(self))
+    }
+    self.<span class="apidocCodeKeywordSpan">_read</span>()
+  }
+})
+}
+
+// start walking the dir, and emit an "entry" event for each one.
+DirReader.prototype._read = function () {
+var self = this
+...</pre></li>
     </ul>
 
 
@@ -5304,7 +5606,23 @@ same as the intended size, if the size is set.
     })()
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+self.filter = typeof props.filter === 'function' ? props.filter : null
+if (props.sort === 'alpha') props.sort = alphasort
+
+// start the ball rolling.
+// this will stat the thing, and then call self._read()
+// to start reading whatever it is.
+// console.error("calling stat", props.path, currentStat)
+self.<span class="apidocCodeKeywordSpan">_stat</span>(currentStat)
+}
+
+function alphasort (a, b) {
+return a === b ? 0
+  : a.toLowerCase() &gt; b.toLowerCase() ? 1
+    : a.toLowerCase() &lt; b.toLowerCase() ? -1
+      : a &gt; b ? 1
+...</pre></li>
     </ul>
 
 
@@ -5323,21 +5641,20 @@ same as the intended size, if the size is set.
   if (this._stream) this._stream.pause(who)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-
-function collect (stream) {
-if (stream._collected) return
-
-if (stream._paused) return stream.on('resume', collect.bind(null, stream))
-
-stream._collected = true
-stream.<span class="apidocCodeKeywordSpan">pause</span>()
-
-stream.on('data', save)
-stream.on('end', save)
-var buf = []
-function save (b) {
-  if (typeof b === 'string') b = new Buffer(b)
-  if (Buffer.isBuffer(b) &amp;&amp; !b.length) return
+  return function (c) {
+    // throw in some pathological pause()/resume() behavior
+    // just for extra fun.
+    process.nextTick(function () {
+      if (!foggy &amp;&amp; !ended) { // &amp;&amp; Math.random() &lt; 0.3) {
+        console.error(indent + '%s casts a spell', entry.basename)
+        console.error('\na slowing fog comes over the battlefield...\n\u001b[32m')
+        entry.<span class="apidocCodeKeywordSpan">pause</span>()
+        entry.once('resume', liftFog)
+        foggy = setTimeout(liftFog, 1000)
+      }
+    })
+  }
+}
 ...</pre></li>
     </ul>
 
@@ -5400,20 +5717,21 @@ like `rsync -a` than simply a copy.
   this._read()
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-        if (dest) stream.pipe(dest)
-
-        buf.forEach(function (b) {
-          if (b) stream.emit('data', b)
-          else stream.emit('end')
-        })
-
-        stream.<span class="apidocCodeKeywordSpan">resume</span>()
-      }
-
-      return dest
-    }
-  })(stream.pipe)
+    console.error('%s breaks the spell!', who &amp;&amp; who.path)
+  } else {
+    console.error('the spell expires!')
+  }
+  console.error('\u001b[mthe fog lifts!\n')
+  clearTimeout(foggy)
+  foggy = null
+  if (entry._paused) entry.<span class="apidocCodeKeywordSpan">resume</span>()
 }
+
+if (entry.type === 'Directory') {
+  var ended = false
+  entry.once('end', function () { ended = true })
+  return function (c) {
+    // throw in some pathological pause()/resume() behavior
 ...</pre></li>
     </ul>
 
@@ -5682,7 +6000,23 @@ fstream
     self._finish()
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+self._buffer = []
+self.ready = false
+
+self.filter = typeof props.filter === 'function' ? props.filter : null
+
+// start the ball rolling.
+// this checks what's there already, and then calls
+// self.<span class="apidocCodeKeywordSpan">_create</span>() to call the impl-specific creation stuff.
+self._stat(current)
+}
+
+// Calling this means that it's something we can't create.
+// Just assert that it's already there, otherwise raise a warning.
+Writer.prototype._create = function () {
+var self = this
+...</pre></li>
     </ul>
 
 
@@ -5779,7 +6113,23 @@ fstream
     }
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+if (self._processing) return
+
+var entry = self._buffer.shift()
+if (!entry) {
+  // console.error("DW Drain")
+  self.emit('drain')
+  if (self._ended) self.<span class="apidocCodeKeywordSpan">_finish</span>()
+  return
+}
+
+self._processing = true
+// console.error("DW Entry", entry._path)
+
+self.emit('entry', entry)
+...</pre></li>
     </ul>
 
 
@@ -5832,7 +6182,23 @@ fstream
     create(self)
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+self.filter = typeof props.filter === 'function' ? props.filter : null
+if (props.sort === 'alpha') props.sort = alphasort
+
+// start the ball rolling.
+// this will stat the thing, and then call self._read()
+// to start reading whatever it is.
+// console.error("calling stat", props.path, currentStat)
+self.<span class="apidocCodeKeywordSpan">_stat</span>(currentStat)
+}
+
+function alphasort (a, b) {
+return a === b ? 0
+  : a.toLowerCase() &gt; b.toLowerCase() ? 1
+    : a.toLowerCase() &lt; b.toLowerCase() ? -1
+      : a &gt; b ? 1
+...</pre></li>
     </ul>
 
 
@@ -6102,7 +6468,23 @@ been written when it's done.
     self._ended = true
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  else processEntries()
+
+  function processEntries () {
+    self._length = self.entries.length
+    if (typeof self.sort === 'function') {
+      self.entries = self.entries.sort(self.sort.bind(self))
+    }
+    self.<span class="apidocCodeKeywordSpan">_read</span>()
+  }
+})
+}
+
+// start walking the dir, and emit an "entry" event for each one.
+DirReader.prototype._read = function () {
+var self = this
+...</pre></li>
     </ul>
 
 
